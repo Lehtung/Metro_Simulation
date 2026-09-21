@@ -1,0 +1,6 @@
+/* @file css/06-thanh-cong-cu-ban-ve.css — thanh phóng to/thu nhỏ và khung cuộn bản vẽ khổ giới hạn (trước đây JS tiêm vào) */
+#gu_zbar{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:6px 0}
+#gu_zbar .btn{width:auto!important;margin:0!important;display:inline-block!important;padding:4px 12px}
+#gu_zbar #gu_zin,#gu_zbar #gu_zout{min-width:34px;font-size:15px;font-weight:700;padding:2px 8px}
+#gu_zwrap{overflow:auto;max-height:82vh;border:1px solid #d7dde5;border-radius:6px;background:#fff}
+#gu_rs{margin-top:12px}

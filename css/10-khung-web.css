@@ -1,0 +1,65 @@
+/* @file css/10-khung-web.css — giao diện bản web: màn hình đăng nhập, đổi mật khẩu, trình đơn tài khoản, quản trị tài khoản */
+.kd-man{position:fixed;inset:0;z-index:20000;display:flex;align-items:center;justify-content:center;padding:16px;
+  background:linear-gradient(135deg,#0b2440 0%,#0f2f52 50%,#123a63 100%)}
+.kd-man[hidden]{display:none}
+body.kd-khoa{overflow:hidden}
+.kd-hop{background:#fff;border-radius:14px;width:min(420px,100%);padding:26px 28px 18px;box-shadow:0 24px 60px rgba(0,0,0,.35);color:#1e293b}
+.kd-dau{display:flex;gap:12px;align-items:center;margin-bottom:18px}
+.kd-bieu-tuong{width:44px;height:44px;flex:0 0 44px}
+.kd-tieu-de{font-size:17px;margin:0;color:#0f2f52;line-height:1.3}
+.kd-phu{margin:3px 0 0;color:#64748b;font-size:12.5px}
+.kd-form{display:flex;flex-direction:column;gap:6px}
+.kd-form[hidden]{display:none}
+.kd-form label{font-size:12.5px;font-weight:600;color:#334155;margin-top:6px}
+.kd-form input{font:inherit;font-size:14px;padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc}
+.kd-form input:focus{outline:2px solid #16a394;outline-offset:0;background:#fff}
+.kd-nut{font:inherit;font-size:14px;font-weight:700;margin-top:12px;padding:10px 14px;border:0;border-radius:8px;background:#16a394;color:#fff;cursor:pointer}
+.kd-nut:hover{background:#12897d}
+.kd-nut:disabled{opacity:.6;cursor:progress}
+.kd-phu-nut{background:#e2e8f0;color:#1e293b}
+.kd-phu-nut:hover{background:#cbd5e1}
+.kd-hang{display:flex;gap:8px;justify-content:flex-end}
+.kd-hang .kd-nut{flex:1}
+.kd-ghi{font-size:12px;color:#64748b;margin:4px 0 0;line-height:1.5}
+.kd-loi{margin-top:12px;padding:9px 11px;border-radius:8px;background:#fef2f2;border-left:4px solid #b91c1c;color:#7f1d1d;font-size:12.8px;white-space:pre-line}
+.kd-loi[hidden]{display:none}
+.kd-dang-tai{display:flex;align-items:center;gap:10px;padding:14px 2px;color:#334155;font-size:13.5px}
+.kd-dang-tai[hidden]{display:none}
+.kd-quay{width:20px;height:20px;border-radius:50%;border:3px solid #cbd5e1;border-top-color:#16a394;animation:kd-quay .8s linear infinite}
+@keyframes kd-quay{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.kd-quay{animation-duration:3s}}
+.kd-chan{margin:16px 0 0;font-size:11px;color:#94a3b8;line-height:1.5}
+/* trình đơn tài khoản trên thanh tiêu đề */
+.kd-nd{position:relative;flex:0 0 auto}
+.kd-nd[hidden]{display:none}
+.kd-menu{position:absolute;right:0;top:calc(100% + 6px);z-index:9500;min-width:280px;background:#fff;border-radius:10px;padding:6px;
+  box-shadow:0 12px 36px rgba(10,25,45,.30);display:flex;flex-direction:column}
+.kd-menu[hidden]{display:none}
+.kd-menu-dau{padding:8px 10px 9px;border-bottom:1px solid #e2e8f0;margin-bottom:4px;display:flex;flex-direction:column;gap:2px;color:#0f2f52}
+.kd-menu-dau span{font-size:11.5px;color:#64748b}
+.kd-menu button{font:inherit;font-size:12.8px;text-align:left;background:none;border:0;border-radius:6px;padding:8px 10px;color:#1e293b;cursor:pointer}
+.kd-menu button:hover,.kd-menu button:focus-visible{background:#eef2f6;outline:none}
+.kd-menu hr{border:0;border-top:1px solid #e2e8f0;margin:4px 0}
+/* hộp thoại quản trị */
+.kd-mbox{width:min(1080px,96vw)}
+.kd-qt{padding:14px 16px}
+.kd-the{display:flex;gap:4px;margin-bottom:12px}
+.kd-the button{font:inherit;font-size:13px;font-weight:600;border:0;border-radius:6px;padding:7px 12px;background:#e2e8f0;color:#334155;cursor:pointer}
+.kd-the button.on{background:#0f2f52;color:#fff}
+.kd-tao{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;margin-bottom:10px}
+.kd-tao label{display:flex;flex-direction:column;gap:3px;font-size:12px;font-weight:600;color:#334155}
+.kd-tao input,.kd-tao select{font:inherit;font-size:13px;padding:6px 8px;border:1px solid #cbd5e1;border-radius:6px;min-width:170px}
+.kd-tao .kd-nut{margin-top:0;padding:7px 14px;font-size:13px}
+.kd-tb{background:#ecfdf5;border-left:4px solid #16a394;border-radius:6px;padding:9px 12px;margin-bottom:10px;font-size:13px;color:#064e3b}
+.kd-tb[hidden]{display:none}
+.kd-tb code{font-size:15px;font-weight:700;background:#fff;padding:2px 8px;border-radius:4px;letter-spacing:.04em}
+.kd-cuon{overflow:auto;max-height:60vh;background:#fff;border:1px solid #e2e8f0;border-radius:8px}
+.kd-bang{border-collapse:collapse;width:100%;font-size:12.5px}
+.kd-bang th{position:sticky;top:0;background:#f1f5f9;text-align:left;padding:7px 8px;font-weight:600;color:#334155;border-bottom:1px solid #e2e8f0}
+.kd-bang td{padding:6px 8px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
+.kd-bang select{font:inherit;font-size:12px;padding:3px 5px;border:1px solid #cbd5e1;border-radius:5px}
+.kd-bang button{font:inherit;font-size:11.5px;border:1px solid #cbd5e1;background:#f8fafc;border-radius:5px;padding:3px 8px;cursor:pointer;margin-right:4px}
+.kd-bang button:hover{background:#e2e8f0}
+.kd-nhan{display:inline-block;font-size:11px;font-weight:600;border-radius:10px;padding:1px 8px}
+.kd-nhan.xanh{background:#dcfce7;color:#166534}.kd-nhan.do{background:#fee2e2;color:#991b1b}.kd-nhan.vang{background:#fef3c7;color:#92400e}
+@media print{.kd-man,.kd-nd{display:none!important}}
