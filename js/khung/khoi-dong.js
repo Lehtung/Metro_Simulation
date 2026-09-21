@@ -26,35 +26,23 @@ function bam32(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i
 
 const nghi=ms=>new Promise(r=>setTimeout(r,ms));
 
-/* Tải một phần mã, có thử lại.
-   Hai loại trục trặc đều được xử lý ở đây:
-   – đường truyền: Apps Script chuyển hướng phản hồi sang script.googleusercontent.com và bước này thỉnh thoảng
-     trả HTTP 404 hoặc đứt giữa chừng, nhất là khi gọi liên tiếp nhiều lần. Đây là trục trặc nhất thời của Google,
-     gọi lại sau một nhịp là được;
-   – sai lệch nội dung: độ dài hoặc mã kiểm tra không khớp số máy chủ báo.
-   Lỗi về phiên, quyền hay dữ liệu thì KHÔNG thử lại, vì gọi lại cũng cho kết quả ấy.
+/* Tải một phần mã.
+   Việc thử lại khi đường truyền trục trặc do lớp API lo (xem api.js). Ở đây chỉ lo phần nội dung:
+   độ dài và mã kiểm tra phải trùng số máy chủ báo; sai thì tải lại phần đó một lần nữa.
    Máy chủ trước 3.24.5 không gửi 'dai'/'ks' — khi đó bỏ qua bước kiểm nội dung. */
-const CHO_THU_LAI=[700,1800,3500,6000];
-async function taiPhanMa(i){
+async function taiPhanMa(i,baoSuCo){
   let cuoi='';
-  for(let lan=0;lan<=CHO_THU_LAI.length;lan++){
-    if(lan) { chu('Đang nạp mã tính toán… phần '+(i+1)+', thử lại lần '+lan+'…'); await nghi(CHO_THU_LAI[lan-1]); }
-    try{
-      const p=await API.goi('tai_ma',{phan:i});
-      const ma=String(p.ma==null?'':p.ma);
-      if(p.dai!=null&&ma.length!==p.dai){cuoi='nhận '+ma.length+'/'+p.dai+' ký tự';continue;}
-      if(p.ks&&bam32(ma)!==p.ks){cuoi='mã kiểm tra '+bam32(ma)+' ≠ '+p.ks;continue;}
-      p.ma=ma; return p;
-    }catch(e){
-      const ma=e&&e.ma;
-      if(ma==='PHIEN'||ma==='QUYEN'||ma==='PHAI_DOI_MK'||ma==='DU_LIEU'||ma==='CAU_HINH') throw e;
-      cuoi=(e&&e.message)||String(e);
-    }
+  for(let lan=0;lan<2;lan++){
+    const p=await API.goi('tai_ma',{phan:i},{bao:(k,n,tb)=>{
+      if(baoSuCo) baoSuCo();
+      chu('Đang nạp mã tính toán… phần '+(i+1)+'/'+SO_PHAN+', thử lại lần '+k+'/'+n+'…');
+    }});
+    const ma=String(p.ma==null?'':p.ma);
+    if(p.dai!=null&&ma.length!==p.dai){cuoi='nhận '+ma.length+'/'+p.dai+' ký tự';if(baoSuCo)baoSuCo();continue;}
+    if(p.ks&&bam32(ma)!==p.ks){cuoi='mã kiểm tra '+bam32(ma)+' ≠ '+p.ks;if(baoSuCo)baoSuCo();continue;}
+    p.ma=ma; return p;
   }
-  throw new Error('Phần mã thứ '+(i+1)+'/'+SO_PHAN+' không tải được sau '+(CHO_THU_LAI.length+1)+' lần thử. '
-    +'Lần cuối: '+cuoi+'. Nếu là lỗi HTTP 404 thì đây là trục trặc nhất thời ở bước chuyển hướng của Google Apps Script '
-    +'(script.googleusercontent.com) chứ không phải mã sai — thường gặp khi trình duyệt đang đăng nhập nhiều tài khoản Google '
-    +'hoặc chặn cookie bên thứ ba. Hãy thử lại, hoặc mở trang trong cửa sổ ẩn danh chỉ đăng nhập một tài khoản Google.');
+  throw new Error('Phần mã thứ '+(i+1)+'/'+SO_PHAN+' nhận về không nguyên vẹn sau 2 lần tải ('+cuoi+').');
 }
 let SO_PHAN=0;
 
@@ -94,20 +82,33 @@ function xoaDemMa(){
 }
 window.XOA_DEM_MA=xoaDemMa;      /* gõ XOA_DEM_MA() trong Console để buộc tải lại mã */
 
-/* Tải toàn bộ các phần mã, chạy song song tối đa 3 luồng — nhanh gấp khoảng ba lần so với nối đuôi,
-   nhưng vẫn đủ thưa để không làm bước chuyển hướng của Apps Script quá tải (nguồn gốc của lỗi 404). */
-const SONG_SONG=3;
+/* Tải toàn bộ các phần mã, song song nhiều luồng nhưng SỐ LUỒNG TỰ CO LẠI khi gặp trục trặc.
+   Bắt đầu bằng 4 luồng cho nhanh; hễ có một phần phải thử lại thì các luồng lần lượt rút về còn 1,
+   vì gọi dồn dập chính là lúc bước chuyển hướng của Apps Script hay trả 404 nhất.
+   Đổi mức khởi đầu bằng CAU_HINH_WEB.SO_LUONG (1 = luôn nối đuôi, chậm nhưng êm nhất). */
 async function taiTatCaPhanMa(tong){
-  const kq=new Array(tong); let ke=0, xong=0;
+  const batDauLuong=Math.max(1,Math.min(+((window.CAU_HINH_WEB||{}).SO_LUONG)||4,8));
+  const kq=new Array(tong);
+  let ke=0, xong=0, dangChay=0, suCo=0;
+  const baoSuCo=()=>{suCo++;};
   async function luong(){
-    for(;;){
-      const i=ke++; if(i>=tong) return;
-      kq[i]=await taiPhanMa(i);
-      xong++; chu('Đang nạp mã tính toán… '+Math.round((xong/tong)*100)+' %');
-    }
+    dangChay++;
+    try{
+      for(;;){
+        if(suCo>0&&dangChay>1) return;        /* có trục trặc: thu hẹp dần về một luồng */
+        const i=ke++; if(i>=tong) return;
+        kq[i]=await taiPhanMa(i,baoSuCo);
+        xong++; chu('Đang nạp mã tính toán… '+Math.round((xong/tong)*100)+' %');
+      }
+    }finally{ dangChay--; }
   }
-  const n=Math.max(1,Math.min(SONG_SONG,tong));
-  await Promise.all(Array.from({length:n},(_,k)=>nghi(k*150).then(luong)));
+  const n=Math.max(1,Math.min(batDauLuong,tong));
+  await Promise.all(Array.from({length:n},(_,k)=>nghi(k*100).then(luong)));
+  /* các luồng đã rút lui vì gặp trục trặc: quét nốt phần còn thiếu bằng một luồng duy nhất */
+  for(let i=0;i<tong;i++) if(!kq[i]){
+    kq[i]=await taiPhanMa(i,baoSuCo);
+    xong++; chu('Đang nạp mã tính toán… '+Math.round((xong/tong)*100)+' %');
+  }
   return kq;
 }
 
@@ -171,7 +172,7 @@ async function batDau(){
   manHinh(true);
   if(API.token()){
     hien('kd_dang_tai'); chu('Đang khôi phục phiên làm việc…');
-    try{ await napGoi(await API.goi('khoi_dong')); return; }
+    try{ await napGoi(await API.goi('khoi_dong',null,{bao:(k,n)=>chu('Đường truyền tới Google trục trặc, đang thử lại lần '+k+'/'+n+'…')})); return; }
     catch(e){ if(e.ma==='PHAI_DOI_MK'){ moDoiMatKhau(true); return; } if(daNap) {loi(e.message);return;} if(e.ma!=='PHIEN') loi(e.message); }
   }
   hien('kd_f_dn'); try{el('kd_ten').focus();}catch(e){}
@@ -181,7 +182,8 @@ async function batDau(){
 el('kd_f_dn').addEventListener('submit',async ev=>{
   ev.preventDefault(); const nut=el('kd_nut_dn'); nut.disabled=true; loi('');
   try{
-    const j=await API.goi('dang_nhap',{ten:el('kd_ten').value.trim(),mat_khau:el('kd_mk').value});
+    const j=await API.goi('dang_nhap',{ten:el('kd_ten').value.trim(),mat_khau:el('kd_mk').value},
+      {bao:(k,n)=>{ hien('kd_dang_tai'); chu('Đường truyền tới Google trục trặc, đang thử lại lần '+k+'/'+n+'…'); }});
     API.datToken(j.token); ND=j.nguoi_dung;
     if(j.phai_doi_mk){ el('kd_mk_cu').value=el('kd_mk').value; el('kd_mk').value=''; moDoiMatKhau(true); return; }
     el('kd_mk').value=''; await napGoi(j);
