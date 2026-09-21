@@ -27,14 +27,24 @@ async function napGoi(j){
   hien('kd_dang_tai'); loi('');
   chu('Đang dựng dữ liệu 5 tuyến từ Google Sheet…');
   window.CORE=BANG_DU_LIEU.raCore(j.goi.du_lieu);
-  chu('Đang nạp mã tính toán…');
+  /* Mã tính toán tải theo từng phần: một phản hồi Apps Script không chở nổi cả gói (bị cắt giữa chừng). */
+  const tong=+j.goi.so_phan_ma||0;
+  if(!tong) throw new Error('Máy chủ không có mã tính toán (so_phan_ma = 0) — kiểm tra các tệp logic_*.html trên Apps Script.');
+  const tep=[]; let dang=null;
+  for(let i=0;i<tong;i++){
+    chu('Đang nạp mã tính toán… '+Math.round((i/tong)*100)+' %');
+    const p=await API.goi('tai_ma',{phan:i});
+    if(!dang||dang.ten!==p.ten){dang={ten:p.ten,ma:''};tep.push(dang);}
+    dang.ma+=p.ma;
+    if(p.cuoi_tep) dang=null;
+  }
+  chu('Đang khởi động các phân hệ…');
   const loiNap=[], batLoi=e=>loiNap.push(e.message||String(e.error||e));
   window.addEventListener('error',batLoi);
   const sanSang=new Promise((ok,hong)=>{document.addEventListener('app:san-sang',ok,{once:true});setTimeout(()=>hong(new Error('Ứng dụng không khởi động được trong 60 giây.')),60000);});
-  for(const m of j.goi.logic){const s=document.createElement('script');s.textContent=m.ma;s.dataset.logic=m.ten;document.body.appendChild(s);}
+  for(const m of tep){const s=document.createElement('script');s.textContent=m.ma;s.dataset.logic=m.ten;document.body.appendChild(s);}
   window.removeEventListener('error',batLoi);
   if(loiNap.length) throw new Error('Lỗi khi nạp mã tính toán: '+loiNap.slice(0,3).join(' | '));
-  chu('Đang khởi động các phân hệ…');
   await sanSang;
   chu('Đang áp thông số dùng chung…');
   const kq=THONG_SO.ap(j.goi.thong_so);
