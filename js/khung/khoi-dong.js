@@ -21,6 +21,23 @@ function capNhatMenu(){
   document.querySelectorAll('#kd_menu [data-quyen]').forEach(b=>{b.hidden=!coQuyen(b.dataset.quyen);});
 }
 
+/* Mã kiểm tra 32 bit (FNV-1a trên từng đơn vị UTF-16) — đúng công thức bam32_ của máy chủ. */
+function bam32(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)>>>0;}return h.toString(16);}
+
+/* Tải một phần mã và kiểm ngay độ dài + mã kiểm tra; sai thì thử lại tối đa hai lần trước khi báo lỗi.
+   Máy chủ bản cũ (trước 3.24.5) không gửi hai trường này — khi đó bỏ qua bước kiểm. */
+async function taiPhanMa(i){
+  let cuoi='';
+  for(let lan=0;lan<3;lan++){
+    const p=await API.goi('tai_ma',{phan:i});
+    const ma=String(p.ma==null?'':p.ma);
+    if(p.dai!=null&&ma.length!==p.dai){cuoi='nhận '+ma.length+'/'+p.dai+' ký tự';continue;}
+    if(p.ks&&bam32(ma)!==p.ks){cuoi='mã kiểm tra '+bam32(ma)+' ≠ '+p.ks;continue;}
+    p.ma=ma; return p;
+  }
+  throw new Error('Phần mã thứ '+(i+1)+' hỏng sau 3 lần tải ('+cuoi+') — đường truyền tới Google Apps Script đang làm sai lệch dữ liệu.');
+}
+
 /* ---- nạp gói ứng dụng ---- */
 async function napGoi(j){
   ND=j.nguoi_dung; capNhatMenu();
@@ -33,16 +50,33 @@ async function napGoi(j){
   const tep=[]; let dang=null;
   for(let i=0;i<tong;i++){
     chu('Đang nạp mã tính toán… '+Math.round((i/tong)*100)+' %');
-    const p=await API.goi('tai_ma',{phan:i});
-    if(!dang||dang.ten!==p.ten){dang={ten:p.ten,ma:''};tep.push(dang);}
+    const p=await taiPhanMa(i);
+    if(!dang||dang.ten!==p.ten){dang={ten:p.ten,ma:'',dai:p.tep_dai,ks:p.tep_ks};tep.push(dang);}
     dang.ma+=p.ma;
-    if(p.cuoi_tep) dang=null;
+    if(p.cuoi_tep){
+      /* Kiểm tệp đã ghép: độ dài và mã kiểm tra phải trùng số máy chủ báo. */
+      if(dang.dai!=null&&dang.ma.length!==dang.dai)
+        throw new Error('Tệp mã '+dang.ten+' ghép lại được '+dang.ma.length+' ký tự, máy chủ báo '+dang.dai+' — một phần bị thiếu trên đường truyền. Thử đăng nhập lại.');
+      if(dang.ks&&bam32(dang.ma)!==dang.ks)
+        throw new Error('Tệp mã '+dang.ten+' sai mã kiểm tra sau khi ghép ('+bam32(dang.ma)+' ≠ '+dang.ks+') — nội dung bị đổi trên đường truyền. Thử đăng nhập lại.');
+      dang=null;
+    }
   }
   chu('Đang khởi động các phân hệ…');
-  const loiNap=[], batLoi=e=>loiNap.push(e.message||String(e.error||e));
+  const loiNap=[];
+  const batLoi=e=>{
+    let m=e.message||String(e.error||e);
+    if(e.lineno||e.colno) m+=' [dòng '+e.lineno+', cột '+e.colno+']';
+    loiNap.push(m);
+  };
   window.addEventListener('error',batLoi);
   const sanSang=new Promise((ok,hong)=>{document.addEventListener('app:san-sang',ok,{once:true});setTimeout(()=>hong(new Error('Ứng dụng không khởi động được trong 60 giây.')),60000);});
-  for(const m of tep){const s=document.createElement('script');s.textContent=m.ma;s.dataset.logic=m.ten;document.body.appendChild(s);}
+  for(const m of tep){
+    const truoc=loiNap.length;
+    const s=document.createElement('script');s.textContent=m.ma;s.dataset.logic=m.ten;
+    try{ document.body.appendChild(s); }catch(e){ loiNap.push((e&&e.message||String(e))); }
+    if(loiNap.length>truoc) loiNap[truoc]='tệp '+m.ten+' ('+m.ma.length+' ký tự): '+loiNap[truoc];
+  }
   window.removeEventListener('error',batLoi);
   if(loiNap.length) throw new Error('Lỗi khi nạp mã tính toán: '+loiNap.slice(0,3).join(' | '));
   await sanSang;
