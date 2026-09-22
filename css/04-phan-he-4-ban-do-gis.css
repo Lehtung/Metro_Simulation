@@ -9,6 +9,9 @@
 #tab-gis .gchon .nhan{color:#5D6B78;font-weight:600;letter-spacing:.02em}
 #tab-gis .gchon button{border:1px solid #C7D0D9;background:#fff;border-radius:6px;padding:2px 8px;cursor:pointer;font-size:12px;color:#16324F}
 #tab-gis .gchon button:hover{background:#EEF3F8}
+#tab-gis .gdung{display:grid;grid-template-columns:auto 1fr;gap:4px 8px;align-items:center;background:#fff}
+#tab-gis .gdung .nhan{grid-column:1/-1;margin-bottom:2px}
+#tab-gis .gdung select{font:inherit;padding:1px 4px;border:1px solid #C7D0D9;border-radius:5px;max-width:100%}
 #tab-gis .gtab{border:1.5px solid #DCE1E6;background:#fff;border-radius:18px;padding:4px 10px 4px 4px;display:flex;align-items:center;gap:6px;cursor:pointer;font:inherit;font-size:13px;color:#1E2B37}
 #tab-gis .gtab.all{padding:4px 12px}
 #tab-gis .gtab .rd{width:24px;height:24px;border-radius:50%;color:#fff;font-weight:700;font-size:12px;display:grid;place-items:center}
