@@ -1,0 +1,46 @@
+/* @file css/04-phan-he-4-ban-do-gis.css — phân hệ 4 – bản đồ GIS (#tab-gis) */
+#tab-gis .gwrap{display:flex;height:100%}
+#tab-gis #g_mapwrap{position:relative;flex:1;min-width:0}
+#tab-gis #g_map{position:absolute;inset:0;background:#E4E8EC}
+#tab-gis aside{width:430px;background:#fff;border-left:1px solid #DCE1E6;overflow-y:auto;display:flex;flex-direction:column}
+#tab-gis .gtabs{display:flex;gap:6px;padding:12px 14px 10px;border-bottom:1px solid #DCE1E6;position:sticky;top:0;background:#fff;z-index:5;flex-wrap:wrap}
+#tab-gis .gchon{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:7px 14px;border-bottom:1px solid #DCE1E6;background:#F7F9FB;font-size:12.5px}
+#tab-gis .gchon label{display:inline-flex;align-items:center;gap:4px;cursor:pointer}
+#tab-gis .gchon .nhan{color:#5D6B78;font-weight:600;letter-spacing:.02em}
+#tab-gis .gchon button{border:1px solid #C7D0D9;background:#fff;border-radius:6px;padding:2px 8px;cursor:pointer;font-size:12px;color:#16324F}
+#tab-gis .gchon button:hover{background:#EEF3F8}
+#tab-gis .gtab{border:1.5px solid #DCE1E6;background:#fff;border-radius:18px;padding:4px 10px 4px 4px;display:flex;align-items:center;gap:6px;cursor:pointer;font:inherit;font-size:13px;color:#1E2B37}
+#tab-gis .gtab.all{padding:4px 12px}
+#tab-gis .gtab .rd{width:24px;height:24px;border-radius:50%;color:#fff;font-weight:700;font-size:12px;display:grid;place-items:center}
+#tab-gis .gtab[aria-pressed=true]{border-color:#16324F;background:#F1F5F9;font-weight:600}
+#tab-gis section{padding:14px;border-bottom:1px solid #DCE1E6}
+#tab-gis h2{font-size:15px;margin:0 0 10px;font-weight:600}
+#tab-gis h3{font-size:13.5px;margin:0 0 8px;font-weight:600;color:#5D6B78}
+#tab-gis .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+#tab-gis .facts div{border-left:3px solid var(--lc,#999);padding:2px 0 2px 8px}
+#tab-gis .facts b{display:block;font-size:18px;font-weight:600}
+#tab-gis .facts span{font-size:12px;color:#5D6B78}
+#tab-gis svg.strip{width:100%;height:auto;display:block;overflow:visible}
+#tab-gis .calc{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#tab-gis .calc label{font-size:12px;color:#5D6B78;display:flex;flex-direction:column;gap:3px}
+#tab-gis select{font:inherit;padding:5px 6px;border:1px solid #DCE1E6;border-radius:4px;background:#fff;color:#1E2B37}
+#tab-gis .result{margin-top:10px;background:#F4F7FA;border-radius:6px;padding:10px 12px;font-size:13.5px;line-height:1.55}
+#tab-gis .result .big{font-size:22px;font-weight:700;color:#16324F}
+#tab-gis table{width:100%;border-collapse:collapse;font-size:13px}
+#tab-gis th{text-align:right;font-weight:600;color:#5D6B78;font-size:12px;padding:5px 6px;border-bottom:1px solid #DCE1E6;position:sticky;top:0;background:#fff}
+#tab-gis td{text-align:right;white-space:nowrap;padding:5px 6px;border-bottom:1px solid #EEF1F4}
+#tab-gis th:first-child,#tab-gis td:first-child,#tab-gis th:nth-child(2),#tab-gis td:nth-child(2){text-align:left}
+#tab-gis tbody tr{cursor:pointer}#tab-gis tbody tr:hover{background:#F4F7FA}#tab-gis tbody tr.on{background:#E6EEF6}
+#tab-gis .tag{display:inline-block;font-size:10.5px;border-radius:3px;padding:0 4px;margin-left:4px;vertical-align:1px}
+#tab-gis .tag.tc{background:#16324F;color:#fff}#tab-gis .tag.gv{border:1px solid #8A96A3;color:#5D6B78}
+#tab-gis .sim{position:absolute;left:12px;right:12px;bottom:14px;z-index:800;background:rgba(255,255,255,.96);border:1px solid #DCE1E6;border-radius:8px;padding:8px 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:0 2px 10px rgba(22,50,79,.15)}
+#tab-gis .sim button{font:inherit;border:0;background:#16324F;color:#fff;border-radius:5px;padding:6px 12px;cursor:pointer;min-width:74px}
+#tab-gis .sim input[type=range]{flex:1;min-width:140px;accent-color:#16324F}
+#tab-gis .sim .clock{font-size:18px;font-weight:700;min-width:64px;color:#16324F}
+#tab-gis .sim label{font-size:12px;color:#5D6B78;display:flex;gap:4px;align-items:center}
+#tab-gis .leaflet-popup-content{font-family:inherit;font-size:13px;line-height:1.5;margin:10px 14px}
+#tab-gis .pp h4{margin:0 0 4px;font-size:14px}#tab-gis .pp table td{padding:1px 0;border:0;text-align:left;white-space:normal}#tab-gis .pp table td:first-child{color:#5D6B78;padding-right:10px}
+#tab-gis .lbl{background:rgba(255,255,255,.88);border:0;box-shadow:none;padding:0 3px;font-size:11px;font-weight:600;color:#1E2B37}
+#tab-gis .lbl::before{display:none}
+#tab-gis .train{border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--c),0 1px 4px rgba(0,0,0,.4);background:var(--c);color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center}
+#tab-gis .note{font-size:12px;color:#5D6B78;line-height:1.5}
