@@ -2,6 +2,14 @@
 #tab-gis .gwrap{display:flex;height:100%}
 #tab-gis #g_mapwrap{position:relative;flex:1;min-width:0}
 #tab-gis #g_map{position:absolute;inset:0;background:#E4E8EC}
+/* 3.32.1: khung bản đồ khi xem toàn màn hình — #g_map đã là absolute inset:0 nên tự lấp đầy. */
+#tab-gis #g_mapwrap:fullscreen{background:#fff}
+#tab-gis #g_mapwrap:-webkit-full-screen{background:#fff}
+#tab-gis .sim #g_full{border:1px solid #C7D0D9;background:#fff;border-radius:6px;padding:3px 10px;cursor:pointer;font:inherit;color:#16324F}
+#tab-gis .sim #g_full:hover{background:#EEF3F8}
+#tab-gis .sim #g_spd{width:58px;font:inherit;font-size:12px;padding:2px 4px;border:1px solid #C7D0D9;border-radius:6px}
+#tab-gis .gnen{background:#fff}
+#tab-gis .gnen #g_nen_url{flex:1;min-width:180px;font:inherit;font-size:12px;padding:2px 6px;border:1px solid #C7D0D9;border-radius:6px}
 #tab-gis aside{width:430px;background:#fff;border-left:1px solid #DCE1E6;overflow-y:auto;display:flex;flex-direction:column}
 #tab-gis .gtabs{display:flex;gap:6px;padding:12px 14px 10px;border-bottom:1px solid #DCE1E6;position:sticky;top:0;background:#fff;z-index:5;flex-wrap:wrap}
 #tab-gis .gchon{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:7px 14px;border-bottom:1px solid #DCE1E6;background:#F7F9FB;font-size:12.5px}

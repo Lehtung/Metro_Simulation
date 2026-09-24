@@ -8,8 +8,12 @@
 (function(){
 'use strict';
 const TAB_PH={'tab-sim':'1-mo-phong','tab-ops':'2-dung-do','tab-eng':'3-hieu-suat','tab-gis':'4-gis','tab-gau':'5-kho-gioi-han'};
-/* không phải thông số: lựa chọn tuyến/xem, tệp, hay phụ thuộc tuyến đang chọn */
-const BO_QUA=['line','tw_sel','fxlsx','h_file','d_line','gaA','gaB','e_line','g_t','g_mode','g_hw','g_spd','g_dir','g_tq','g_sp'];
+/* không phải thông số: lựa chọn tuyến/xem, tệp, hay phụ thuộc tuyến đang chọn.
+   g_nen_url (3.32.2, địa chỉ ảnh nền tự khai) CŨNG không phải thông số tính toán: nó chỉ có tác dụng
+   khi bấm nút «Áp dụng» (dựng lại danh mục nền), còn THONG_SO.ap chỉ gán giá trị rồi phát sự kiện
+   change — gán vào đây sẽ hiện địa chỉ trong ô mà nền không đổi, tức là sai lệch giữa cái thấy và cái
+   chạy. Việc chia sẻ địa chỉ nền cho cả nhóm đã có bảng 8_THAM_SO_GIS của tệp Excel dữ liệu chung. */
+const BO_QUA=['line','tw_sel','fxlsx','h_file','d_line','gaA','gaB','e_line','g_t','g_mode','g_hw','g_spd','g_dir','g_tq','g_sp','g_nen_url'];
 /* thứ tự áp các ô điều khiển của phân hệ 5 (ô sau phụ thuộc ô trước) */
 const THU_TU_GAU=['gu_pow','gu_volt','gu_tbauto','gu_tb','gu_mode','gu_qs'];
 const el=id=>document.getElementById(id);
