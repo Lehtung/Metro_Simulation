@@ -2,7 +2,8 @@
    API_URL: địa chỉ Web App của Google Apps Script, dạng https://script.google.com/macros/s/<mã triển khai>/exec
    (Apps Script → Deploy → Manage deployments → sao chép "Web app URL"). */
 window.CAU_HINH_WEB = {
-  API_URL: 'DAN_DIA_CHI_WEB_APP_VAO_DAY',
+  API_URL: 'https://script.google.com/macros/s/AKfycbxYPn814r58wJ7-IlS0HBRNqX2u6V5KLAieK8jotSPCTHadPLnXLjJSjWuKmBEvSV2h/exec
+',
   THOI_GIAN_CHO_MS: 90000,
   /* Nơi lưu đệm mã tính toán trong trình duyệt:
      'lau_dai' — giữ qua các lần mở trình duyệt (mặc định, nhanh nhất)
