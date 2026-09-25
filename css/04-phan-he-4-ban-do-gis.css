@@ -1,6 +1,13 @@
 /* @file css/04-phan-he-4-ban-do-gis.css — phân hệ 4 – bản đồ GIS (#tab-gis) */
 #tab-gis .gwrap{display:flex;height:100%}
 #tab-gis #g_mapwrap{position:relative;flex:1;min-width:0}
+#tab-gis .gxd{position:absolute;left:50%;top:92px;transform:translateX(-50%);z-index:900;width:min(680px,calc(100% - 24px));background:#FFF4F2;border:1px solid #E7A39B;border-left:5px solid #C62828;border-radius:10px;padding:10px 14px;box-shadow:0 6px 18px rgba(0,0,0,.18);font-size:13px;line-height:1.45;color:#1E2B37}
+#tab-gis .gxd h4{margin:0 0 6px;color:#B71C1C;font-size:14px;cursor:pointer}
+#tab-gis .gxd.gon ul{display:none}
+#tab-gis .gxd ul{margin:0 0 6px;padding-left:18px}
+#tab-gis .gxd p{margin:0}
+#tab-gis .gxd button{font-size:12px;padding:2px 8px;margin-left:4px}
+#tab-gis #g_play:disabled{opacity:.45;cursor:not-allowed}
 #tab-gis #g_map{position:absolute;inset:0;background:#E4E8EC}
 /* 3.32.1: khung bản đồ khi xem toàn màn hình — #g_map đã là absolute inset:0 nên tự lấp đầy. */
 #tab-gis #g_mapwrap:fullscreen{background:#fff}
