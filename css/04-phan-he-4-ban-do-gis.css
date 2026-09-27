@@ -12,7 +12,11 @@
 /* 3.32.1: khung bản đồ khi xem toàn màn hình — #g_map đã là absolute inset:0 nên tự lấp đầy. */
 #tab-gis #g_mapwrap:fullscreen{background:#fff}
 #tab-gis #g_mapwrap:-webkit-full-screen{background:#fff}
-#tab-gis .sim #g_full{border:1px solid #C7D0D9;background:#fff;border-radius:6px;padding:3px 10px;cursor:pointer;font:inherit;color:#16324F}
+/* 3.36.2: nút biểu tượng — Chạy/Dừng và Toàn màn hình; tên nút ở title/aria-label */
+#tab-gis .sim button.g-ic{min-width:0;width:34px;height:30px;padding:0;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+#tab-gis .sim button.g-ic svg{width:20px;height:20px;fill:currentColor}
+#tab-gis .sim button.g-ic svg .vien{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+#tab-gis .sim #g_full{border:1px solid #C7D0D9;background:#fff;color:#16324F;margin-left:auto}
 #tab-gis .sim #g_full:hover{background:#EEF3F8}
 #tab-gis .sim #g_spd{width:58px;font:inherit;font-size:12px;padding:2px 4px;border:1px solid #C7D0D9;border-radius:6px}
 #tab-gis .gnen{background:#fff}
@@ -51,11 +55,15 @@
 #tab-gis tbody tr{cursor:pointer}#tab-gis tbody tr:hover{background:#F4F7FA}#tab-gis tbody tr.on{background:#E6EEF6}
 #tab-gis .tag{display:inline-block;font-size:10.5px;border-radius:3px;padding:0 4px;margin-left:4px;vertical-align:1px}
 #tab-gis .tag.tc{background:#16324F;color:#fff}#tab-gis .tag.gv{border:1px solid #8A96A3;color:#5D6B78}
-#tab-gis .sim{position:absolute;left:12px;right:12px;bottom:14px;z-index:800;background:rgba(255,255,255,.96);border:1px solid #DCE1E6;border-radius:8px;padding:8px 12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:0 2px 10px rgba(22,50,79,.15)}
+#tab-gis .sim{position:absolute;left:12px;right:12px;bottom:14px;z-index:800;background:rgba(255,255,255,.96);border:1px solid #DCE1E6;border-radius:8px;padding:8px 12px;display:flex;align-items:center;gap:10px;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;box-shadow:0 2px 10px rgba(22,50,79,.15)}
 #tab-gis .sim button{font:inherit;border:0;background:#16324F;color:#fff;border-radius:5px;padding:6px 12px;cursor:pointer;min-width:74px}
-#tab-gis .sim input[type=range]{flex:1;min-width:140px;accent-color:#16324F}
-#tab-gis .sim .clock{font-size:18px;font-weight:700;min-width:64px;color:#16324F}
-#tab-gis .sim label{font-size:12px;color:#5D6B78;display:flex;gap:4px;align-items:center}
+#tab-gis .sim input[type=range]{flex:1 1 80px;min-width:80px;accent-color:#16324F}
+#tab-gis .sim .clock{font-size:18px;font-weight:700;min-width:64px;color:#16324F;flex:0 0 auto}
+#tab-gis .sim label{font-size:12px;color:#5D6B78;display:flex;gap:4px;align-items:center;flex:0 0 auto;white-space:nowrap}
+#tab-gis .sim label[hidden]{display:none}
+/* khung bản đồ hẹp (màn hình nhỏ, panel bên phải chiếm chỗ): ẩn chữ dẫn trước ô chọn để vẫn giữ một dòng */
+#tab-gis #g_mapwrap{container-type:inline-size}
+@container (max-width:820px){#tab-gis .sim label>span:first-child{display:none}#tab-gis .sim{gap:7px;padding:7px 9px}#tab-gis .sim input[type=range]{min-width:40px}#tab-gis .sim .clock{font-size:16px;min-width:50px}#tab-gis .sim #g_dir{max-width:140px}}
 #tab-gis .leaflet-popup-content{font-family:inherit;font-size:13px;line-height:1.5;margin:10px 14px}
 #tab-gis .pp h4{margin:0 0 4px;font-size:14px}#tab-gis .pp table td{padding:1px 0;border:0;text-align:left;white-space:normal}#tab-gis .pp table td:first-child{color:#5D6B78;padding-right:10px}
 #tab-gis .lbl{background:rgba(255,255,255,.88);border:0;box-shadow:none;padding:0 3px;font-size:11px;font-weight:600;color:#1E2B37}

@@ -1,13 +1,14 @@
 /* @file js/khung/thong-so.js — thu thập và áp bộ thông số tính toán dùng chung (bảng THONG_SO trên Google Sheet)
    Mỗi dòng: [phan_he, khoa, gia_tri, kieu, nhan]
-     phan_he : 1-mo-phong | 2-dung-do | 3-hieu-suat | 4-gis | 5-kho-gioi-han
+     phan_he : 1-mo-phong | 2-quay-dau | 3-dung-do | 4-hieu-suat | 5-gis | 6-kho-gioi-han   (4.0.0: đánh số lại;
+               khi áp chỉ dùng khoa — dòng cũ trên Sheet mang nhãn phân hệ cũ vẫn áp đúng)
      khoa    : id của ô nhập trên giao diện, riêng phân hệ 5 dùng "P.<tên>" cho tham số khổ giới hạn (GAU.P)
      kieu    : so | chu | dung_sai
    Cách áp (giữ đúng hành vi của ứng dụng gốc — xem UX.restore): ô nhập phân hệ 1 được gán lặng rồi gọi run() một lần;
    ô của phân hệ khác được gán rồi phát sự kiện change để mô-đun cập nhật trạng thái trong; chỉ áp các giá trị KHÁC giá trị hiện có. */
 (function(){
 'use strict';
-const TAB_PH={'tab-sim':'1-mo-phong','tab-ops':'2-dung-do','tab-eng':'3-hieu-suat','tab-gis':'4-gis','tab-gau':'5-kho-gioi-han'};
+const TAB_PH={'tab-sim':'1-mo-phong','tab-tkqd':'2-quay-dau','tab-ops':'3-dung-do','tab-eng':'4-hieu-suat','tab-gis':'5-gis','tab-gau':'6-kho-gioi-han'};
 /* không phải thông số: lựa chọn tuyến/xem, tệp, hay phụ thuộc tuyến đang chọn.
    g_nen_url (3.32.2, địa chỉ ảnh nền tự khai) CŨNG không phải thông số tính toán: nó chỉ có tác dụng
    khi bấm nút «Áp dụng» (dựng lại danh mục nền), còn THONG_SO.ap chỉ gán giá trị rồi phát sự kiện
@@ -16,6 +17,10 @@ const TAB_PH={'tab-sim':'1-mo-phong','tab-ops':'2-dung-do','tab-eng':'3-hieu-sua
 const BO_QUA=['line','tw_sel','fxlsx','h_file','d_line','gaA','gaB','e_line','g_t','g_mode','g_hw','g_spd','g_dir','g_tq','g_sp','g_nen_url'];
 /* thứ tự áp các ô điều khiển của phân hệ 5 (ô sau phụ thuộc ô trước) */
 const THU_TU_GAU=['gu_pow','gu_volt','gu_tbauto','gu_tb','gu_mode','gu_qs'];
+/* 3.38.0: ô bị khoá (disabled) nhưng vẫn là thông số — giá trị tự nhập của phân hệ 1b giữ lại khi bỏ dấu «Tự nhập»;
+   áp theo thứ tự trên giao diện: ô đánh dấu «Tự nhập…» đứng trước ô giá trị nên được gán trước. Ô «Quay đầu» (tb)
+   của phân hệ 1 nay chỉ đọc (tính ở phân hệ 1b) nên không còn trong bộ thông số. */
+const KHOA_VAN_THU=['gu_tb'];
 const el=id=>document.getElementById(id);
 const sach=s=>String(s||'').replace(/\s+/g,' ').trim();
 function nhanCua(e){
@@ -30,7 +35,7 @@ function nhanCua(e){
 function oDieuKhien(){
   const out=[];
   document.querySelectorAll('.tabpage input[id], .tabpage select[id], .tabpage textarea[id]').forEach(e=>{
-    if(BO_QUA.indexOf(e.id)>=0||e.type==='file'||e.type==='button'||e.readOnly||e.disabled&&e.id!=='gu_tb') return;
+    if(BO_QUA.indexOf(e.id)>=0||e.type==='file'||e.type==='button'||e.readOnly||e.disabled&&KHOA_VAN_THU.indexOf(e.id)<0) return;
     if(e.dataset&&e.dataset.k) return;                /* ô tham số GAU.P — xử lý riêng */
     if(e.closest('#stlist')) return;                  /* danh sách ga dừng: phụ thuộc tuyến */
     const tp=e.closest('.tabpage'); const ph=tp&&TAB_PH[tp.id]; if(!ph) return;
@@ -44,13 +49,13 @@ function kieuCua(e){return (e.type==='checkbox'||e.type==='radio')?'dung_sai':(e
 function thu(){
   const rows=[];
   for(const {e,ph} of oDieuKhien()) rows.push([ph,e.id,giaTri(e),kieuCua(e),nhanCua(e)]);
-  try{ if(typeof GIS!=='undefined'&&GIS.params) rows.push(['4-gis','du_phong_pc',String(GIS.params().spare),'so','Dự phòng đoàn tàu (%)']); }catch(x){}
+  try{ if(typeof GIS!=='undefined'&&GIS.params) rows.push(['5-gis','du_phong_pc',String(GIS.params().spare),'so','Dự phòng đoàn tàu (%)']); }catch(x){}
   try{
     if(typeof GAU!=='undefined'&&GAU.P){
       document.querySelectorAll('#tab-gau input[data-k]').forEach(i=>{
         const k=i.dataset.k; if(i.readOnly||!(k in GAU.P)) return;
         const v=GAU.P[k]; if(typeof v!=='number'&&typeof v!=='string'&&typeof v!=='boolean') return;
-        rows.push(['5-kho-gioi-han','P.'+k,typeof v==='boolean'?(v?'TRUE':'FALSE'):String(v),typeof v==='number'?'so':typeof v==='boolean'?'dung_sai':'chu',nhanCua(i)]);
+        rows.push(['6-kho-gioi-han','P.'+k,typeof v==='boolean'?(v?'TRUE':'FALSE'):String(v),typeof v==='number'?'so':typeof v==='boolean'?'dung_sai':'chu',nhanCua(i)]);
       });
     }
   }catch(x){}

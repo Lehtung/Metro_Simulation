@@ -1,0 +1,26 @@
+/* @file css/07-thiet-ke-quay-dau.css — phân hệ 2 – thiết kế đường quay đầu (#tab-tkqd) */
+#tab-tkqd{padding:14px}
+#tab-tkqd .qd-luoi{display:grid;grid-template-columns:minmax(420px,470px) minmax(560px,1fr);gap:14px;align-items:start}
+@media (max-width:1100px){#tab-tkqd .qd-luoi{grid-template-columns:1fr}}
+#tab-tkqd .card{background:#fff;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:14px;margin-bottom:14px}
+#tab-tkqd .qd2{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px}
+#tab-tkqd .qd2 label{font-size:11.5px;color:var(--muted);display:flex;flex-direction:column;gap:3px}
+#tab-tkqd .qd2 input[type=number],#tab-tkqd .qd2 input[type=text],#tab-tkqd .qd2 select{width:100%;font:inherit;font-size:12.5px;padding:4px 6px;border:1px solid #cbd5e1;border-radius:5px;background:#fffbeb;text-align:right}
+#tab-tkqd .qd2 select{text-align:left}
+#tab-tkqd .qd2 input:disabled{background:#eef2f6;color:#0f3d6b;font-weight:700}
+#tab-tkqd .qd2 .qd-chk{flex-direction:row;align-items:center;gap:6px;align-self:end;padding-bottom:4px}
+#tab-tkqd .qd2 .qd-chk input{width:auto}
+#tab-tkqd table.qd-ghi input[type=number]{width:64px;font:inherit;font-size:12px;padding:2px 4px;border:1px solid #cbd5e1;border-radius:4px;background:#fffbeb;text-align:right}
+#tab-tkqd .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px}
+#tab-tkqd .kpi div{border-left:3px solid var(--ink);padding-left:8px}
+#tab-tkqd .kpi div.hl{border-left-color:#16a394;background:#effaf8}
+#tab-tkqd .kpi b{display:block;font-size:17px}
+#tab-tkqd .kpi span{font-size:11px;color:var(--muted)}
+#tab-tkqd table.qd-kq td.chon{background:#effaf8;font-weight:700}
+#tab-tkqd #qd_ve svg,#tab-tkqd #qd_bd svg,#tab-tkqd #qd_gantt svg{width:100%;height:auto;display:block;background:#fff}
+#tab-tkqd details summary{cursor:pointer;font-weight:700;color:var(--ink);font-size:12.5px}
+#tab-tkqd #qd_lythuyet{font-size:12.5px;line-height:1.55}
+#tab-tkqd #qd_lythuyet .eq{font-family:Georgia,serif;background:#f7f9fb;border-left:3px solid #cbd5e1;padding:4px 10px;margin:6px 0}
+#tab-tkqd .qd-tb{padding:8px 10px;border-radius:6px;font-size:12.3px;margin-top:6px;line-height:1.5}
+#tab-tkqd .qd-tb.ok{background:#dcfce7;border-left:4px solid #16a34a}
+#tab-tkqd .qd-tb.canh{background:#fef3c7;border-left:4px solid #d97706}
