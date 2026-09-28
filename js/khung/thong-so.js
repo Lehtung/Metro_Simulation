@@ -1,6 +1,6 @@
 /* @file js/khung/thong-so.js — thu thập và áp bộ thông số tính toán dùng chung (bảng THONG_SO trên Google Sheet)
    Mỗi dòng: [phan_he, khoa, gia_tri, kieu, nhan]
-     phan_he : 1-mo-phong | 2-quay-dau | 3-dung-do | 4-hieu-suat | 5-gis | 6-kho-gioi-han | 7-nhu-cau-van-tai   (4.0.0: đánh số lại; 4.1.0: thêm phân hệ 7;
+     phan_he : 1-mo-phong | 2-quay-dau | 3-dung-do | 4-hieu-suat | 5-kho-gioi-han | 6-gis | 7-nhu-cau-van-tai   (4.0.0: đánh số lại; 4.1.0: thêm phân hệ 7; 5.0.0: đổi chỗ 5 ↔ 6;
                khi áp chỉ dùng khoa — dòng cũ trên Sheet mang nhãn phân hệ cũ vẫn áp đúng)
      khoa    : id của ô nhập trên giao diện, riêng phân hệ 5 dùng "P.<tên>" cho tham số khổ giới hạn (GAU.P)
      kieu    : so | chu | dung_sai
@@ -8,7 +8,7 @@
    ô của phân hệ khác được gán rồi phát sự kiện change để mô-đun cập nhật trạng thái trong; chỉ áp các giá trị KHÁC giá trị hiện có. */
 (function(){
 'use strict';
-const TAB_PH={'tab-sim':'1-mo-phong','tab-tkqd':'2-quay-dau','tab-ops':'3-dung-do','tab-eng':'4-hieu-suat','tab-gis':'5-gis','tab-gau':'6-kho-gioi-han','tab-ncvt':'7-nhu-cau-van-tai'};
+const TAB_PH={'tab-sim':'1-mo-phong','tab-tkqd':'2-quay-dau','tab-ops':'3-dung-do','tab-eng':'4-hieu-suat','tab-gau':'5-kho-gioi-han','tab-gis':'6-gis','tab-ncvt':'7-nhu-cau-van-tai'};
 /* không phải thông số: lựa chọn tuyến/xem, tệp, hay phụ thuộc tuyến đang chọn.
    g_nen_url (3.32.2, địa chỉ ảnh nền tự khai) CŨNG không phải thông số tính toán: nó chỉ có tác dụng
    khi bấm nút «Áp dụng» (dựng lại danh mục nền), còn THONG_SO.ap chỉ gán giá trị rồi phát sự kiện
@@ -51,13 +51,13 @@ function kieuCua(e){return (e.type==='checkbox'||e.type==='radio')?'dung_sai':(e
 function thu(){
   const rows=[];
   for(const {e,ph} of oDieuKhien()) rows.push([ph,e.id,giaTri(e),kieuCua(e),nhanCua(e)]);
-  try{ if(typeof GIS!=='undefined'&&GIS.params) rows.push(['5-gis','du_phong_pc',String(GIS.params().spare),'so','Dự phòng đoàn tàu (%)']); }catch(x){}
+  try{ if(typeof GIS!=='undefined'&&GIS.params) rows.push(['6-gis','du_phong_pc',String(GIS.params().spare),'so','Dự phòng đoàn tàu (%)']); }catch(x){}
   try{
     if(typeof GAU!=='undefined'&&GAU.P){
       document.querySelectorAll('#tab-gau input[data-k]').forEach(i=>{
         const k=i.dataset.k; if(i.readOnly||!(k in GAU.P)) return;
         const v=GAU.P[k]; if(typeof v!=='number'&&typeof v!=='string'&&typeof v!=='boolean') return;
-        rows.push(['6-kho-gioi-han','P.'+k,typeof v==='boolean'?(v?'TRUE':'FALSE'):String(v),typeof v==='number'?'so':typeof v==='boolean'?'dung_sai':'chu',nhanCua(i)]);
+        rows.push(['5-kho-gioi-han','P.'+k,typeof v==='boolean'?(v?'TRUE':'FALSE'):String(v),typeof v==='number'?'so':typeof v==='boolean'?'dung_sai':'chu',nhanCua(i)]);
       });
     }
   }catch(x){}

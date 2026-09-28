@@ -25,3 +25,8 @@
 #tab-gau .gu2 select,#tab-gau .gu2 input[type=number]{width:100%;font:inherit;font-size:12.5px;padding:4px 6px;border:1px solid #cbd5e1;border-radius:5px;background:#fffbeb;text-align:left}
 #tab-gau .gu2 .gu_chk{flex-direction:row;align-items:center;gap:6px;align-self:end;padding-bottom:4px}#tab-gau .gu2 .gu_chk input{width:auto}
 #tab-gau input.lk{background:#eef3f8!important;border-style:dashed}
+#tab-gau .gu-tuyen label{font-size:11.5px;color:var(--muted);display:block;margin-bottom:3px}
+#tab-gau .gu-tuyen label i{display:block;font-style:normal;font-size:10px;color:#94a3b8;font-weight:600}
+#tab-gau .gu-tuyen input{width:100%;font:inherit;font-size:12.5px;padding:4px 6px;border:1px solid #cbd5e1;border-radius:5px;background:#fffbeb;text-align:left}
+#tab-gau .gu-tuyen input[readonly]{background:#eef3f8;border-style:dashed}
+#tab-gau input.bad{border-color:#dc2626!important;background:#fee2e2!important}

@@ -10,7 +10,7 @@
 #tab-tkqd .qd2 input:disabled{background:#eef2f6;color:#0f3d6b;font-weight:700}
 #tab-tkqd .qd2 .qd-chk{flex-direction:row;align-items:center;gap:6px;align-self:end;padding-bottom:4px}
 #tab-tkqd .qd2 .qd-chk input{width:auto}
-#tab-tkqd table.qd-ghi input[type=number]{width:64px;font:inherit;font-size:12px;padding:2px 4px;border:1px solid #cbd5e1;border-radius:4px;background:#fffbeb;text-align:right}
+#tab-tkqd table.qd-ghi input[type=number]{width:60px;font:inherit;font-size:12px;padding:2px 4px;border:1px solid #cbd5e1;border-radius:4px;background:#fffbeb;text-align:right}
 #tab-tkqd .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px}
 #tab-tkqd .kpi div{border-left:3px solid var(--ink);padding-left:8px}
 #tab-tkqd .kpi div.hl{border-left-color:#16a394;background:#effaf8}
@@ -24,3 +24,11 @@
 #tab-tkqd .qd-tb{padding:8px 10px;border-radius:6px;font-size:12.3px;margin-top:6px;line-height:1.5}
 #tab-tkqd .qd-tb.ok{background:#dcfce7;border-left:4px solid #16a34a}
 #tab-tkqd .qd-tb.canh{background:#fef3c7;border-left:4px solid #d97706}
+#tab-tkqd .qd-he{margin-bottom:8px}
+#tab-tkqd .qd-he label{grid-column:1/-1}
+#tab-tkqd table.qd-ghi{font-size:11.5px}
+#tab-tkqd table.qd-ghi td,#tab-tkqd table.qd-ghi th{padding:3px 4px}
+#tab-tkqd table.qd-ghi td{white-space:nowrap}
+#tab-tkqd table.qd-ghi td.l{text-align:left;font-weight:600}
+#tab-tkqd table.qd-kq tr.chon td{background:#effaf8}
+#tab-tkqd #qd_ghive svg{width:100%;height:auto;display:block;background:#fff}
