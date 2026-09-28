@@ -1,6 +1,6 @@
 /* @file js/khung/thong-so.js — thu thập và áp bộ thông số tính toán dùng chung (bảng THONG_SO trên Google Sheet)
    Mỗi dòng: [phan_he, khoa, gia_tri, kieu, nhan]
-     phan_he : 1-mo-phong | 2-quay-dau | 3-dung-do | 4-hieu-suat | 5-gis | 6-kho-gioi-han   (4.0.0: đánh số lại;
+     phan_he : 1-mo-phong | 2-quay-dau | 3-dung-do | 4-hieu-suat | 5-gis | 6-kho-gioi-han | 7-nhu-cau-van-tai   (4.0.0: đánh số lại; 4.1.0: thêm phân hệ 7;
                khi áp chỉ dùng khoa — dòng cũ trên Sheet mang nhãn phân hệ cũ vẫn áp đúng)
      khoa    : id của ô nhập trên giao diện, riêng phân hệ 5 dùng "P.<tên>" cho tham số khổ giới hạn (GAU.P)
      kieu    : so | chu | dung_sai
@@ -8,13 +8,15 @@
    ô của phân hệ khác được gán rồi phát sự kiện change để mô-đun cập nhật trạng thái trong; chỉ áp các giá trị KHÁC giá trị hiện có. */
 (function(){
 'use strict';
-const TAB_PH={'tab-sim':'1-mo-phong','tab-tkqd':'2-quay-dau','tab-ops':'3-dung-do','tab-eng':'4-hieu-suat','tab-gis':'5-gis','tab-gau':'6-kho-gioi-han'};
+const TAB_PH={'tab-sim':'1-mo-phong','tab-tkqd':'2-quay-dau','tab-ops':'3-dung-do','tab-eng':'4-hieu-suat','tab-gis':'5-gis','tab-gau':'6-kho-gioi-han','tab-ncvt':'7-nhu-cau-van-tai'};
 /* không phải thông số: lựa chọn tuyến/xem, tệp, hay phụ thuộc tuyến đang chọn.
    g_nen_url (3.32.2, địa chỉ ảnh nền tự khai) CŨNG không phải thông số tính toán: nó chỉ có tác dụng
    khi bấm nút «Áp dụng» (dựng lại danh mục nền), còn THONG_SO.ap chỉ gán giá trị rồi phát sự kiện
    change — gán vào đây sẽ hiện địa chỉ trong ô mà nền không đổi, tức là sai lệch giữa cái thấy và cái
    chạy. Việc chia sẻ địa chỉ nền cho cả nhóm đã có bảng 8_THAM_SO_GIS của tệp Excel dữ liệu chung. */
-const BO_QUA=['line','tw_sel','fxlsx','h_file','d_line','gaA','gaB','e_line','g_t','g_mode','g_hw','g_spd','g_dir','g_tq','g_sp','g_nen_url'];
+const BO_QUA=['line','tw_sel','fxlsx','h_file','d_line','gaA','gaB','e_line','g_t','g_mode','g_hw','g_spd','g_dir','g_tq','g_sp','g_nen_url',
+  /* 4.1.0 phân hệ 7: lựa chọn xem (tuyến, lớp bản đồ, cách vẽ vòng ga) — không phải thông số */
+  'nv_ct_line','nv_ct_mode','nv_ct_l_ward','nv_ct_l_walk','nv_ct_l_bike','nv_ct_l_moto','nv_ct_l_line','nv_dm_line'];
 /* thứ tự áp các ô điều khiển của phân hệ 5 (ô sau phụ thuộc ô trước) */
 const THU_TU_GAU=['gu_pow','gu_volt','gu_tbauto','gu_tb','gu_mode','gu_qs'];
 /* 3.38.0: ô bị khoá (disabled) nhưng vẫn là thông số — giá trị tự nhập của phân hệ 1b giữ lại khi bỏ dấu «Tự nhập»;

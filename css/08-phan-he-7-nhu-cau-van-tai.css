@@ -1,0 +1,52 @@
+/* @file css/08-phan-he-7-nhu-cau-van-tai.css — phân hệ 7 – nhu cầu hành khách và phương án vận tải (#tab-ncvt) */
+#tab-ncvt .card{background:#fff;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:14px;margin-bottom:14px}
+#tab-ncvt .note{font-size:12px;color:var(--muted);line-height:1.55}
+#tab-ncvt .nv-dau{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 10px}
+#tab-ncvt .nv-tabs{display:flex;gap:4px;flex-wrap:wrap}
+#tab-ncvt .nv-tabs button{font:inherit;font-size:12.5px;padding:7px 12px;border:1px solid #cbd5e1;background:#f8fafc;color:var(--ink);border-radius:6px;cursor:pointer}
+#tab-ncvt .nv-tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink);font-weight:700}
+#tab-ncvt .nv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:4px 0 8px;font-size:12px}
+#tab-ncvt .nv-bar>span{color:#475569;font-weight:600}
+#tab-ncvt .nv-bar .nv-gian{margin-left:8px}
+#tab-ncvt .nv-bar label{display:inline-flex;align-items:center;gap:4px}
+#tab-ncvt .nv-bar input[type=number]{width:72px}
+#tab-ncvt .nv-bar button{font:inherit;font-size:12px;padding:4px 10px;border:1px solid #cbd5e1;border-radius:6px;background:#f8fafc;cursor:pointer}
+#tab-ncvt .nv-bar button.on{background:#1d5289;color:#fff;border-color:#1d5289}
+#tab-ncvt .kpi{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:6px 0 10px}
+#tab-ncvt .kpi div{background:#f8fafc;border:1px solid #e2e8f0;border-left:3px solid var(--ink);border-radius:6px;padding:7px 10px}
+#tab-ncvt .kpi b{display:block;font-size:17px;color:#1f4e79}
+#tab-ncvt .kpi span{font-size:11px;color:#475569}
+#tab-ncvt .nv-side .kpi{grid-template-columns:repeat(2,1fr)}
+#tab-ncvt table{border-collapse:collapse;width:100%;font-size:11.5px}
+#tab-ncvt th,#tab-ncvt td{border:1px solid #e2e8f0;padding:3px 6px;text-align:right}
+#tab-ncvt th{background:#1f4e79;color:#fff;font-weight:600}
+#tab-ncvt td.l,#tab-ncvt th.l{text-align:left}
+#tab-ncvt td.b{font-weight:700}
+#tab-ncvt tr.on td{background:#dbeafe}
+#tab-ncvt tr.tot td{font-weight:700;background:#f1f5f9}
+#tab-ncvt .nv-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:middle}
+#tab-ncvt .nv-dot-db{background:#f59e0b;border:1px solid #b45309}
+#tab-ncvt .nv-ring{display:inline-block;width:14px;height:8px;border-radius:2px;margin:0 3px 0 8px;vertical-align:middle;opacity:.6}
+#tab-ncvt .nv-do{color:#a81f1f}
+#tab-ncvt .nv-wrap{display:grid;grid-template-columns:1fr 440px;gap:12px;align-items:start}
+@media(max-width:1100px){#tab-ncvt .nv-wrap{grid-template-columns:1fr}}
+#tab-ncvt .nv-mapbox{position:relative}
+#nv_ct_map{height:calc(100vh - 200px);min-height:560px;border:1px solid #cbd5e1;border-radius:10px}
+#tab-ncvt .nv-ctl{position:absolute;left:10px;bottom:10px;right:10px;z-index:500;background:rgba(255,255,255,.93);border:1px solid #cbd5e1;border-radius:8px;padding:6px 10px;font-size:12px}
+#tab-ncvt .nv-legend{display:flex;gap:18px;flex-wrap:wrap;font-size:11px;color:#334155;margin-top:4px;line-height:1.5}
+#tab-ncvt .nv-side{display:flex;flex-direction:column;gap:10px}
+#tab-ncvt .nv-stcard{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:10px 12px;min-height:30px}
+#tab-ncvt .nv-stcard h3{margin:0 0 4px;font-size:14px;color:#1f4e79}
+#tab-ncvt .nv-stcard h3 small{font-weight:400;color:#64748b}
+#tab-ncvt .nv-stcard table{margin:6px 0}
+#tab-ncvt .nv-scroll{max-height:calc(100vh - 560px);min-height:200px;overflow:auto}
+#tab-ncvt .nv-scroll tr[data-cx]{cursor:pointer}
+#tab-ncvt .nv-par{display:grid;grid-template-columns:repeat(4,minmax(180px,1fr));gap:8px 14px;margin:0 0 10px}
+#tab-ncvt .nv-par label{display:flex;flex-direction:column;gap:3px;font-size:11.5px;color:#475569;font-weight:600}
+#tab-ncvt .nv-par .nv-rong2{grid-column:span 2}
+#tab-ncvt table.nv-plan th,#tab-ncvt table.nv-plan td{font-size:11px;padding:3px 4px}
+#tab-ncvt .nv-rec{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:12px}
+#tab-ncvt .nv-rec ul{margin:4px 0 0 16px;padding:0}
+#tab-ncvt .nv-rec li{margin:2px 0}
+#tab-ncvt .nv-btns{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap}
+#tab-ncvt .nv-btns .btn{width:auto;margin-top:0}
