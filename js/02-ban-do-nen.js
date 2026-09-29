@@ -26,6 +26,32 @@
   return v||'';};
  window.BASEMAPS=function(){const o={};const tuKhai=(window.NEN_TU_KHAI()||'').trim();
   const ds=tuKhai?defs.concat([['Nền tự khai','Custom base',tuKhai,{maxZoom:20,attribution:'Nguồn ảnh nền do người dùng khai báo'}]]):defs;
+  // thêm nhãn «Quần đảo Hoàng Sa/Trường Sa (Việt Nam)» để hiện trên bản đồ, không phải lớp nền.
+  // KHẲNG ĐỊNH CHỦ QUYỀN BIỂN ĐẢO VIỆT NAM: Hoàng Sa, Trường Sa là lãnh thổ Việt Nam, thuộc chủ quyền Việt Nam.
+  const textStyle =
+    "font-weight: bold; color: #123a63; font-family: Arial; font-size: 13px; text-shadow: 1px 1px 2px white, -1px -1px 2px white, 1px -1px 2px white, -1px 1px 2px white; white-space: nowrap; text-align: center;";
+  const hoangSa = L.marker([16.8, 112.3], {
+    icon: L.divIcon({
+      className: "custom-island-label",
+      html:
+        '<div style="' +
+        textStyle +
+        '">Quần đảo Hoàng Sa<br>(Việt Nam)</div>',
+      iconSize: [140, 40],
+      iconAnchor: [70, 20],
+    }),
+  });
+  const truongSa = L.marker([10.0, 114.0], {
+    icon: L.divIcon({
+      className: "custom-island-label",
+      html:
+        '<div style="' +
+        textStyle +
+        '">Quần đảo Trường Sa<br>(Việt Nam)</div>',
+      iconSize: [140, 40],
+      iconAnchor: [70, 20],
+    }),
+  });
   ds.forEach((d,i)=>{const t=L.tileLayer(d[2],d[3]);t._nm=[d[0],d[1]];t._i=i;o[d[0]]=t;
    /* 3.32.6: lớp phủ chữ (nếu có) bật tắt THEO lớp nền, không thêm dòng vào bảng chọn lớp —
       một thứ điều khiển được ở hai nơi là nguồn gốc mâu thuẫn. zIndex 300+ để chữ nằm trên ảnh. */
@@ -34,7 +60,14 @@
     t._nhan=nhan;
     t.on('add',()=>{const m=t._map;if(m)nhan.forEach(n=>{if(!m.hasLayer(n))n.addTo(m)});});
     t.on('remove',()=>{nhan.forEach(n=>{const m=n._map;if(m)m.removeLayer(n)});});}
-   let bad=0;t.on('tileerror',()=>{if(++bad!==8||i>=3)return;const m=t._map;if(!m)return;const nx=o[defs[3][0]];if(!nx||nx===t||m.hasLayer(nx))return;
+    t.on("add", () => {
+      const m = t._map;
+      if (m) {
+        if (!m.hasLayer(hoangSa)) hoangSa.addTo(m);
+        if (!m.hasLayer(truongSa)) truongSa.addTo(m);
+      }
+    });
+    let bad=0;t.on('tileerror',()=>{if(++bad!==8||i>=3)return;const m=t._map;if(!m)return;const nx=o[defs[3][0]];if(!nx||nx===t||m.hasLayer(nx))return;
     nx.addTo(m);m.removeLayer(t);try{parent.__tileWarn&&parent.__tileWarn()}catch(e){}});});
   window.BASEMAPS._last=o;return o;};
 })();
