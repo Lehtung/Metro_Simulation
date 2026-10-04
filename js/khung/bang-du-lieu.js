@@ -51,8 +51,22 @@ const LUOC_DO={
   ['loai','chu','Loại (depot / ga / đường lưu trú)'],['ma_ga','chu','Mã ga (nếu gắn với ga)'],
   ['x_vn2000','so','X VN2000 (m)'],['y_vn2000','so','Y VN2000 (m)'],
   ['vi_do','so','Vĩ độ (độ)'],['kinh_do','so','Kinh độ (độ)'],
-  ['suc_chua','so','Sức chứa (số đoàn tàu)'],['ghi_chu','chu','Ghi chú']]}
+  ['suc_chua','so','Sức chứa (số đoàn tàu)'],['ghi_chu','chu','Ghi chú']]},
+ /* 5.2.0: số liệu trạm điện kéo và lưới điện kéo (mô hình lưới, phân hệ 4 mục C). Bảng TUỲ CHỌN — tuyến không có dòng nào
+    thì phần mềm tự sinh bộ GIẢ ĐỊNH và ghi rõ trên giao diện. Dòng tinh_trang = GIA_DINH có nguon bắt đầu bằng «Tự sinh» / «Tự đặt»
+    là bộ giả định do phần mềm ghi ra (chức năng ghi dữ liệu 5 tuyến) — khi đọc lại vẫn coi là tự sinh. Có hồ sơ thiết kế:
+    sửa số liệu, đổi tinh_trang thành THIET_KE và ghi nguon. */
+ DL_TRAM_DIEN:{mo_ta:'Trạm điện kéo',tuy_chon:true,cot:[
+  ['ma_tuyen','chu','Tuyến'],['stt','so','Số thứ tự'],['ma','chu','Mã trạm'],['ten','chu','Tên / vị trí'],
+  ['ly_trinh_m','so','Lý trình (m)'],['cong_suat_MW','so','Công suất định mức (MW)'],['U0_V','so','Điện áp không tải U0 (V)'],
+  ['Ri_ohm','so','Điện trở trong Ri (Ω)'],['tinh_trang','chu','Tình trạng số liệu (GIA_DINH / THIET_KE)'],['nguon','chu','Nguồn số liệu']]},
+ DL_LUOI_DIEN:{mo_ta:'Thông số lưới điện kéo theo tuyến',tuy_chon:true,cot:[
+  ['ma_tuyen','chu','Tuyến'],['he_thong','chu','Hệ thống điện (1500DC / 750DC)'],
+  ['r_day_ohm_km','so','r dây tiếp xúc / ray dẫn điện (Ω/km/đường)'],['r_ray_ohm_km','so','r ray chạy – mạch về (Ω/km/đường)'],
+  ['u_huu_ich_V','so','Điện áp hữu ích tham khảo (V)'],['tinh_trang','chu','Tình trạng số liệu (GIA_DINH / THIET_KE)'],['nguon','chu','Nguồn số liệu']]}
 };
+/* dòng giả định do phần mềm tự ghi (không phải số liệu nhập) */
+const laTuSinh=(tt,ng)=>!/THIET|DESIGN/i.test(String(tt||'').normalize('NFD').replace(/[\u0300-\u036f]/g,''))&&/^\s*T[ựu]\s*(sinh|đặt|dat)/i.test(String(ng||''));
 /* bảng nhận dữ liệu từ tệp Excel mẫu (các bảng tuyến); hình học bản đồ và depot không có trong tệp Excel */
 const BANG_TUYEN=['DL_TUYEN','DL_GA','DL_DUONG_CONG','DL_TRAC_DOC','DL_GHI','DL_HAN_CHE'];
 const TAT_CA=Object.keys(LUOC_DO);
@@ -70,7 +84,7 @@ function bangTu(ten,dsDoiTuong){
 /* CORE → các bảng (mảng hai chiều gồm cả 2 dòng tiêu đề) */
 function tuCore(CORE,tuyChon){
   const chiTuyen=tuyChon&&tuyChon.chiTuyen;
-  const B={TUYEN:[],GA:[],DC:[],TD:[],GHI:[],HC:[],HH:[],DP:[],DPT:[],LT:[]};
+  const B={TUYEN:[],GA:[],DC:[],TD:[],GHI:[],HC:[],HH:[],DP:[],DPT:[],LT:[],TRD:[],LD:[]};
   const khoa=Object.keys(CORE.lines).sort((a,b)=>+a-+b);
   for(const k of khoa){const l=CORE.lines[k];
     B.TUYEN.push({ma_tuyen:k,ten:l.ten,chieu_dai_m:l.chieu_dai_m,van_toc_thiet_ke_kmh:l.van_toc_thiet_ke_kmh,
@@ -83,6 +97,14 @@ function tuCore(CORE,tuyChon){
   }
   const R={DL_TUYEN:bangTu('DL_TUYEN',B.TUYEN),DL_GA:bangTu('DL_GA',B.GA),DL_DUONG_CONG:bangTu('DL_DUONG_CONG',B.DC),
     DL_TRAC_DOC:bangTu('DL_TRAC_DOC',B.TD),DL_GHI:bangTu('DL_GHI',B.GHI),DL_HAN_CHE:bangTu('DL_HAN_CHE',B.HC)};
+  /* 5.2.0: trạm điện kéo / lưới — số liệu theo tuyến nên đi cùng nhóm bảng tuyến. tuyChon.giaDinh (do trình duyệt truyền,
+     lấy từ LDK) = bộ đầy đủ kể cả dòng giả định tự sinh, để Google Sheet có sẵn khuôn sửa; không truyền thì chỉ ghi số liệu đã nhập. */
+  const GD=tuyChon&&tuyChon.giaDinh;
+  const TRD=GD&&GD.tram?GD.tram:(CORE.tram_dien||[]), LD=GD&&GD.luoi?GD.luoi:(CORE.luoi_dien||[]);
+  const sttT={};TRD.forEach(t=>{const k=String(t.c);sttT[k]=(sttT[k]||0)+1;
+    B.TRD.push({ma_tuyen:k,stt:sttT[k],ma:t.ma||'',ten:t.ten||'',ly_trinh_m:t.ch,cong_suat_MW:t.P,U0_V:t.U0,Ri_ohm:t.Ri,tinh_trang:t.tt||'GIA_DINH',nguon:t.nguon||''});});
+  LD.forEach(l=>B.LD.push({ma_tuyen:String(l.c),he_thong:l.he||'',r_day_ohm_km:l.rd,r_ray_ohm_km:l.rr,u_huu_ich_V:l.uhu??null,tinh_trang:l.tt||'GIA_DINH',nguon:l.nguon||''}));
+  R.DL_TRAM_DIEN=bangTu('DL_TRAM_DIEN',B.TRD);R.DL_LUOI_DIEN=bangTu('DL_LUOI_DIEN',B.LD);
   if(chiTuyen) return R;
   for(const k of Object.keys(CORE.geom||{}).sort((a,b)=>+a-+b))
     CORE.geom[k].forEach((p,i)=>B.HH.push({ma_tuyen:k,stt:i+1,vi_do:p[0],kinh_do:p[1]}));
@@ -128,6 +150,8 @@ function raCore(bang){
         DP=doc('DL_DEPOT').sort(sx),DPT=nhom(doc('DL_DEPOT_TOA_DO'),'stt_depot');
   /* bảng tuỳ chọn: thiếu thì coi như chưa khai, không phải lỗi */
   const LT=(bang['DL_LUU_TRU']&&bang['DL_LUU_TRU'].length>=2)?doc('DL_LUU_TRU'):[];
+  const TRD=(bang['DL_TRAM_DIEN']&&bang['DL_TRAM_DIEN'].length>=2)?doc('DL_TRAM_DIEN'):[];
+  const LDs=(bang['DL_LUOI_DIEN']&&bang['DL_LUOI_DIEN'].length>=2)?doc('DL_LUOI_DIEN'):[];
   if(!T.length) loi.push('Bảng DL_TUYEN không có tuyến nào');
   if(loi.length) throw new Error('Dữ liệu trên Google Sheet không hợp lệ:\n• '+loi.slice(0,20).join('\n• ')+(loi.length>20?'\n… và '+(loi.length-20)+' lỗi khác':''));
   const CORE={lines:{},geom:{},depots:[]};
@@ -149,6 +173,15 @@ function raCore(bang){
      LTs.push({c:String(d.ma_tuyen),ten:d.ten,loai:d.loai||'depot',ma:d.ma_ga||'',
        X:d.x_vn2000,Y:d.y_vn2000,lat:d.vi_do,lon:d.kinh_do,sc:d.suc_chua,ghi_chu:d.ghi_chu||''});}
    if(LTs.length)CORE.luu_tru=LTs;}
+  /* 5.2.0: trạm điện kéo / lưới — chỉ gắn khoá khi có số liệu NHẬP (bỏ các tuyến chỉ gồm dòng giả định tự sinh) */
+  {const nh=nhom(TRD,'ma_tuyen'),T2=[];
+   for(const k in nh){const ds=nh[k];if(ds.every(o=>laTuSinh(o.tinh_trang,o.nguon)))continue;
+     ds.forEach(o=>{if(o.ly_trinh_m==null||!(o.cong_suat_MW>0)||!(o.U0_V>0)||!(o.Ri_ohm>0))return;
+       T2.push({c:String(k),ma:o.ma||'',ten:o.ten||'',ch:o.ly_trinh_m,P:o.cong_suat_MW,U0:o.U0_V,Ri:o.Ri_ohm,tt:o.tinh_trang||'GIA_DINH',nguon:o.nguon||''});});}
+   if(T2.length)CORE.tram_dien=T2;
+   const L2=LDs.filter(o=>!laTuSinh(o.tinh_trang,o.nguon)&&o.r_day_ohm_km!=null&&o.r_ray_ohm_km!=null)
+     .map(o=>({c:String(o.ma_tuyen),he:o.he_thong||'',rd:o.r_day_ohm_km,rr:o.r_ray_ohm_km,uhu:o.u_huu_ich_V??null,tt:o.tinh_trang||'GIA_DINH',nguon:o.nguon||''}));
+   if(L2.length)CORE.luoi_dien=L2;}
   return CORE;
 }
 const API={LUOC_DO,BANG_TUYEN,TAT_CA,dauBang,tuCore,raCore};

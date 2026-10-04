@@ -45,9 +45,7 @@
  gan('b_sens','click',function(event){sens();});
  gan('b_bench','click',function(event){benchRun();});
  gan('pattern','change',function(event){onPat();});
- gan('b_all','click',function(event){chkAll(1);});
  gan('b_none','click',function(event){chkAll(0);});
- gan('b_ic','click',function(event){chkIC();});
  gan('b_opt','click',function(event){optimise();});
  /* — Phân hệ 3 – báo cáo — */
  gan('eng_nut_pdf','click',function(event){App.report('eng',true);});

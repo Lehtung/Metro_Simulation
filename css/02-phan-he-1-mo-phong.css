@@ -54,3 +54,4 @@
 #tab-sim .grph{font-weight:700;font-size:12.5px;color:#1f4e79;margin:0 0 6px;padding-bottom:4px;border-bottom:1px solid #eef2f6}
 
 #tab-sim .wrap{align-items:stretch}#tab-sim #side{max-height:none;height:calc(100vh - 78px)}#tab-sim #main{height:calc(100vh - 78px);overflow:auto}
+#tbs tr.sw-ht td{background:#e0f2fe;font-weight:600}   /* 5.2.2: dòng Vtk đang dùng trong «So sánh nhiều vận tốc» */

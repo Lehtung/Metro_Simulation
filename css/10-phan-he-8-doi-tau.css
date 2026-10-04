@@ -1,0 +1,47 @@
+/* @file css/10-phan-he-8-doi-tau.css — phân hệ 8 – tính toán đội tàu (#tab-dtau), bộ đếm đoàn tàu (#g_dem) và nhãn tốc độ / dừng ga cạnh đoàn tàu trên bản đồ GIS */
+#tab-dtau .dt-wrap{padding:14px 16px;display:grid;grid-template-columns:340px minmax(0,1fr);gap:14px;align-items:start}
+#tab-dtau .dt-wrap>div{min-width:0}
+#tab-dtau #dt_bang{overflow-x:auto}
+@media(max-width:1100px){#tab-dtau .dt-wrap{grid-template-columns:1fr}}
+#tab-dtau .card{background:#fff;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:14px;margin-bottom:14px}
+#tab-dtau h3{margin:0 0 8px;font-size:14px;color:var(--ink)}
+#tab-dtau .note{font-size:12px;color:var(--muted);line-height:1.55}
+#tab-dtau .dt-par{display:grid;grid-template-columns:1fr 92px;gap:6px 8px;align-items:center;font-size:12.5px}
+#tab-dtau .dt-par label{color:#334155}
+#tab-dtau .dt-par input{width:92px;font:inherit;font-size:12.5px;padding:4px 6px;border:1px solid #cbd5e1;border-radius:5px;text-align:right}
+#tab-dtau .dt-par input[readonly]{background:#f1f5f9;color:#475569}
+#tab-dtau .dt-par .dt-nhom{grid-column:1/-1;margin-top:6px;font-weight:700;color:var(--ink);font-size:12px;border-bottom:1px solid var(--rule);padding-bottom:2px}
+#tab-dtau .dt-cong{font-size:12.5px;line-height:1.7;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:8px 10px}
+#tab-dtau .dt-cong .eq{font-family:"Cambria Math","Times New Roman",serif;font-size:13.5px}
+#tab-dtau .kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 10px}
+@media(max-width:1300px){#tab-dtau .kpi{grid-template-columns:repeat(2,1fr)}}
+#tab-dtau .kpi div{background:#f8fafc;border:1px solid #e2e8f0;border-left:3px solid var(--ink);border-radius:6px;padding:7px 10px}
+#tab-dtau .kpi b{display:block;font-size:18px;color:#1f4e79}
+#tab-dtau .kpi span{font-size:11px;color:#475569}
+#tab-dtau .dt-cb{border-left:5px solid #a4610a;background:#fdf4e3;color:#5c3a07;border-radius:0 6px 6px 0;padding:8px 12px;margin:0 0 10px;font-size:12.5px;line-height:1.6}
+#tab-dtau table{border-collapse:collapse;width:100%;font-size:12px}
+#tab-dtau th,#tab-dtau td{border:1px solid #e2e8f0;padding:4px 6px;text-align:right;white-space:nowrap}
+#tab-dtau th{background:#f1f5f9;color:#1f3b57;font-weight:700;text-align:center}
+#tab-dtau td.l,#tab-dtau th.l{text-align:left}
+#tab-dtau tr.tong td{font-weight:700;background:#f8fafc}
+#tab-dtau td.dt-vuot{color:#a81f1f;font-weight:700}
+#tab-dtau .dt-svg{width:100%;max-width:860px;height:auto;display:block}
+#tab-dtau .dt-chu{font-size:11px;fill:#334155}
+#tab-dtau .dt-btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+#tab-dtau .dt-btns button{font:inherit;font-size:12px;padding:6px 12px;border:1px solid #cbd5e1;border-radius:6px;background:#f8fafc;color:var(--ink);cursor:pointer;font-weight:600}
+#tab-dtau .dt-btns button.chinh{background:var(--ink);color:#fff;border-color:var(--ink)}
+#tab-dtau .tag{display:inline-block;min-width:22px;text-align:center;border-radius:4px;color:#fff;font-weight:700;font-size:11px;padding:1px 4px;margin-right:4px}
+#tab-gis .gdem{position:absolute;left:10px;bottom:64px;z-index:500;background:rgba(255,255,255,.94);border:1px solid #cbd5e1;border-radius:8px;box-shadow:0 1px 6px rgba(0,0,0,.15);padding:6px 9px;font-size:11.5px;line-height:1.5;pointer-events:none;min-width:150px}
+#tab-gis .gdem h5{margin:0 0 3px;font-size:11.5px;color:var(--ink)}
+#tab-gis .gdem .dong{display:flex;align-items:center;gap:6px;white-space:nowrap}
+#tab-gis .gdem .rd{display:inline-block;width:9px;height:9px;border-radius:50%}
+#tab-gis .gdem .so{margin-left:auto;font-variant-numeric:tabular-nums;font-weight:700}
+#tab-gis .gdem .thieu{color:#a81f1f}
+#tab-gis .gdem .tong{border-top:1px solid #e2e8f0;margin-top:3px;padding-top:2px;font-weight:700}
+/* 5.2.2: nhãn cạnh đoàn tàu */
+#tab-gis .gnhan-i{background:none;border:0}
+#tab-gis .gnhan{display:inline-block;white-space:nowrap;font:600 11px/1.25 "Segoe UI",system-ui,Arial,sans-serif;font-variant-numeric:tabular-nums;padding:1px 5px;border-radius:4px;border:1.5px solid #64748b;background:rgba(255,255,255,.95);color:#1e293b;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+#tab-gis .gnhan.chay{color:#fff}
+#tab-gis .gnhan.dung{background:#fff7e6;color:#8a4b00}
+#tab-gis .gnhan.qd{background:#f3e8ff;color:#5b21b6}
+#tab-gis .g-nhan-o{display:inline-flex;align-items:center;gap:4px;margin-left:6px;font-size:12px;white-space:nowrap}

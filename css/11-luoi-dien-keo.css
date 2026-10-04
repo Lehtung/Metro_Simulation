@@ -1,0 +1,23 @@
+/* @file css/11-luoi-dien-keo.css — phân hệ 4 mục C – mô hình lưới điện kéo, bảng số liệu trạm điện kéo; khoá ga đầu/cuối (5.2.0) */
+#ld_host .ld-banner{border-left:6px solid;border-radius:0 6px 6px 0;padding:10px 12px;margin:8px 0 10px;font-size:12.5px;line-height:1.6}
+#ld_host .ld-b-gd{border-color:#a81f1f;background:#fbeceb;color:#5f1212}
+#ld_host .ld-b-hh{border-color:#a4610a;background:#fdf4e3;color:#5c3a07}
+#ld_host .ld-b-tk{border-color:#0f7b45;background:#eaf6ef;color:#0b4d2c}
+#ld_host .ld-bang{width:100%;font-size:12px;margin:4px 0 8px}
+#ld_host .ld-bang td{padding:2px 3px}
+#ld_host .ld-bang tr.ld-gd td:first-child{box-shadow:inset 4px 0 0 #a4610a}
+#ld_host .ld-bang tr.ld-tk td:first-child{box-shadow:inset 4px 0 0 #0f7b45}
+#ld_host .ld-o{width:100%;min-width:64px;padding:2px 4px;font-size:12px;box-sizing:border-box}
+#ld_host .ld-o.ld-rong{min-width:150px}
+#ld_host .ld-nut{gap:6px;flex-wrap:wrap;margin:6px 0}
+#ld_host .ld-tag{display:inline-block;background:#fbeceb;color:#a81f1f;border:1px solid #e6b3b0;border-radius:4px;padding:0 4px;font-size:10.5px;margin-left:4px}
+#ld_host .ld-kl{list-style:none;padding:0;margin:8px 0;font-size:12.5px;line-height:1.6}
+#ld_host .ld-kl li{padding:3px 8px;border-radius:4px;margin-bottom:3px}
+#ld_host .ld-dat{background:#eaf6ef}
+#ld_host .ld-khong{background:#fbeceb}
+#ld_host .ld-de-xuat{background:#f1f5f9;border-radius:6px;padding:8px 10px;font-size:12.5px;line-height:1.6;margin:8px 0}
+#ld_host svg{width:100%;height:auto;margin-top:6px}
+#tab-ops .stlist label.st-khoa{opacity:.8;cursor:not-allowed}
+#tab-ops .stlist label.st-khoa input{cursor:not-allowed}
+#ld_host select.ld-o{min-width:96px}
+#ld_host .ld-nut .btn{width:auto;margin:0}

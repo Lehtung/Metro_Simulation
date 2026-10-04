@@ -226,8 +226,8 @@ el('kd_m_luu_ts').addEventListener('click',()=>{
 el('kd_m_tai_ts').addEventListener('click',()=>thucHien('Đang tải thông số',async()=>{
   const j=await API.goi('tai_thong_so');const kq=THONG_SO.ap(j.thong_so);return 'Đã áp thông số từ Google Sheet ('+kq.ap+' giá trị thay đổi).';}));
 el('kd_m_luu_dl').addEventListener('click',()=>{
-  if(!confirm('Ghi dữ liệu 5 tuyến đang dùng (ga, đường cong, trắc dọc, ghi, hạn chế tốc độ) đè lên các bảng DL_* trên Google Sheet?')) return;
-  thucHien('Đang ghi dữ liệu tuyến',async()=>{const j=await API.goi('luu_du_lieu',{bang:BANG_DU_LIEU.tuCore(CORE,{chiTuyen:true})});return 'Đã ghi lên Google Sheet: '+j.tom_tat.join('; ')+'.';});
+  if(!confirm('Ghi dữ liệu 5 tuyến đang dùng (ga, đường cong, trắc dọc, ghi, hạn chế tốc độ, trạm điện kéo và lưới điện kéo — kể cả bộ giả định tự sinh) đè lên các bảng DL_* trên Google Sheet?')) return;
+  thucHien('Đang ghi dữ liệu tuyến',async()=>{const j=await API.goi('luu_du_lieu',{bang:BANG_DU_LIEU.tuCore(CORE,{chiTuyen:true,giaDinh:(typeof LDK!=='undefined'&&LDK.bangDayDu)?LDK.bangDayDu():null})});return 'Đã ghi lên Google Sheet: '+j.tom_tat.join('; ')+'.';});
 });
 el('kd_m_doi_mk').addEventListener('click',()=>{dongMenu();moDoiMatKhau(false);});
 el('kd_m_qt').addEventListener('click',()=>{dongMenu();if(window.QUAN_TRI)QUAN_TRI.mo(ND);});
@@ -238,7 +238,7 @@ document.addEventListener('app:nap-du-lieu',()=>{
   if(!daNap) return;
   if(!coQuyen('bien_tap')){bao('Dữ liệu từ tệp chỉ dùng trong phiên này — tài khoản "chỉ xem" không ghi được lên Google Sheet.');return;}
   thucHien('Đang ghi dữ liệu từ tệp lên Google Sheet',async()=>{
-    const a=await API.goi('luu_du_lieu',{bang:BANG_DU_LIEU.tuCore(CORE,{chiTuyen:true})});
+    const a=await API.goi('luu_du_lieu',{bang:BANG_DU_LIEU.tuCore(CORE,{chiTuyen:true,giaDinh:(typeof LDK!=='undefined'&&LDK.bangDayDu)?LDK.bangDayDu():null})});
     const b=await API.goi('luu_thong_so',{dong:THONG_SO.thu()});
     return 'Đã ghi dữ liệu từ tệp lên Google Sheet để dùng cho lần sau ('+a.tom_tat.length+' bảng, '+b.so_thay_doi+' thông số thay đổi).';
   });
