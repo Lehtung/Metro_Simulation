@@ -11,7 +11,7 @@ body.kd-khoa{overflow:hidden}
 .kd-form{display:flex;flex-direction:column;gap:6px}
 .kd-form[hidden]{display:none}
 .kd-form label{font-size:12.5px;font-weight:600;color:#334155;margin-top:6px}
-.kd-form input{font:inherit;font-size:14px;padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc}
+.kd-form input{font:inherit;font-size:14px;padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc;color:#0f172a;caret-color:#0f172a}
 .kd-form input:focus{outline:2px solid #16a394;outline-offset:0;background:#fff}
 .kd-nut{font:inherit;font-size:14px;font-weight:700;margin-top:12px;padding:10px 14px;border:0;border-radius:8px;background:#16a394;color:#fff;cursor:pointer}
 .kd-nut:hover{background:#12897d}
@@ -48,7 +48,9 @@ body.kd-khoa{overflow:hidden}
 .kd-the button.on{background:#0f2f52;color:#fff}
 .kd-tao{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px 12px;margin-bottom:10px}
 .kd-tao label{display:flex;flex-direction:column;gap:3px;font-size:12px;font-weight:600;color:#334155}
-.kd-tao input,.kd-tao select{font:inherit;font-size:13px;padding:6px 8px;border:1px solid #cbd5e1;border-radius:6px;min-width:170px}
+.kd-tao input,.kd-tao select{font:inherit;font-size:13px;padding:6px 8px;border:1px solid #cbd5e1;border-radius:6px;min-width:170px;background:#fff;color:#0f172a}
+/* 5.3.2: màu chữ ô nhập ghi tường minh — nền tối (color-scheme:dark ở <html>) từng làm chữ trắng trên ô trắng */
+.kd-man,.kd-man input,#kd_mod_qt{color-scheme:light}
 .kd-tao .kd-nut{margin-top:0;padding:7px 14px;font-size:13px}
 .kd-tb{background:#ecfdf5;border-left:4px solid #16a394;border-radius:6px;padding:9px 12px;margin-bottom:10px;font-size:13px;color:#064e3b}
 .kd-tb[hidden]{display:none}

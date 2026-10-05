@@ -1,4 +1,4 @@
-/* @file css/13-chu-de-toi.css — nền tối: TỰ SINH bởi 03_MA_NGUON_MODULE/va_2026_10bh/tao_chu_de_toi.py từ màu của css/01–11 và js/*.js; KHÔNG sửa tay — sửa màu gốc rồi chạy lại công cụ */
+/* @file css/13-chu-de-toi.css — nền tối: TỰ SINH bởi 03_MA_NGUON_MODULE/va_2026_10bi/tao_chu_de_toi.py từ màu của css/01–11 và js/*.js; KHÔNG sửa tay — sửa màu gốc rồi chạy lại công cụ */
 @media screen{
 /* — từ css/01-giao-dien-chung.css — */
 html:not([data-nen="sang"]) #app #ux_bar{background:#1b2129;border:1px solid #4f565e}
@@ -34,7 +34,7 @@ html:not([data-nen="sang"]) #app .warn{background:#372d01}
 html:not([data-nen="sang"]) #app .card h2,html:not([data-nen="sang"]) #app #tab-ops h2,html:not([data-nen="sang"]) #app #tab-eng h2{color:var(--ink-chu)}
 html:not([data-nen="sang"]) #app #tab-sim h3,html:not([data-nen="sang"]) #app #tab-sim .grph{color:var(--ink-chu)}
 html:not([data-nen="sang"]) #app #tab-sim .grp{background:#191f27}
-html:not([data-nen="sang"]) #app #tab-sim input[type=number]:not(#gu_rs *):not(#gu_svg *),html:not([data-nen="sang"]) #app #tab-sim textarea:not(#gu_rs *):not(#gu_svg *),html:not([data-nen="sang"]) #app #tab-ops input[type=number]:not(#gu_rs *):not(#gu_svg *),html:not([data-nen="sang"]) #app #tab-eng input[type=number]:not(#gu_rs *):not(#gu_svg *){border:1px solid #3c444e}
+html:not([data-nen="sang"]) #app #tab-sim input[type=number]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app #tab-sim textarea:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app #tab-ops input[type=number]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app #tab-eng input[type=number]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){border:1px solid #3c444e}
 html:not([data-nen="sang"]) #app #tab-sim input[type=number]:focus,html:not([data-nen="sang"]) #app #tab-sim select:focus,html:not([data-nen="sang"]) #app #tab-eng input:focus,html:not([data-nen="sang"]) #app #tab-ops input:focus,html:not([data-nen="sang"]) #app #tab-ops select:focus{border-color:var(--ink-nen);background:var(--field)}
 html:not([data-nen="sang"]) #app input.lk{color:var(--ink-chu)!important}
 html:not([data-nen="sang"]) #app #tab-sim .kpi div,html:not([data-nen="sang"]) #app #tab-ops .kpi div,html:not([data-nen="sang"]) #app #tab-eng .kpi div{background:#151b23;border-left:3px solid var(--ink-nen)}
@@ -80,8 +80,8 @@ html:not([data-nen="sang"]) #app #tab-sim .panel{background:#1b2129}
 html:not([data-nen="sang"]) #app #tab-sim h3{color:#93c4f6;border-bottom:2px solid #51565c}
 html:not([data-nen="sang"]) #app #tab-sim label{color:#b3bcc8}
 html:not([data-nen="sang"]) #app #tab-sim input.bad{background:#412526!important}
-html:not([data-nen="sang"]) #app #tab-sim select:not(#gu_rs *):not(#gu_svg *),html:not([data-nen="sang"]) #app #tab-sim input:not(#gu_rs *):not(#gu_svg *),html:not([data-nen="sang"]) #app #tab-sim button:not(#gu_rs *):not(#gu_svg *),html:not([data-nen="sang"]) #app #tab-sim textarea:not(#gu_rs *):not(#gu_svg *){border:1px solid #3e454f}
-html:not([data-nen="sang"]) #app #tab-sim input[type=number]:not(#gu_rs *):not(#gu_svg *),html:not([data-nen="sang"]) #app #tab-sim textarea:not(#gu_rs *):not(#gu_svg *){background:var(--field)}
+html:not([data-nen="sang"]) #app #tab-sim select:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app #tab-sim input:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app #tab-sim button:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app #tab-sim textarea:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){border:1px solid #3e454f}
+html:not([data-nen="sang"]) #app #tab-sim input[type=number]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app #tab-sim textarea:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){background:var(--field)}
 html:not([data-nen="sang"]) #app #tab-sim button.sec{background:#12181f;color:#93c4f6;border:1px solid #3e454f}
 html:not([data-nen="sang"]) #app #tab-sim button.sec:hover{background:#282e37}
 html:not([data-nen="sang"]) #app #tab-sim details{border:1px solid #323a43;background:#181e26}
@@ -96,7 +96,7 @@ html:not([data-nen="sang"]) #app #tab-sim tr:nth-child(even) td{background:#161c
 html:not([data-nen="sang"]) #app #tab-sim .scroll{border:1px solid #51565c}
 html:not([data-nen="sang"]) #app #tab-sim .tab{background:#282e37}
 html:not([data-nen="sang"]) #app #tab-sim .note{color:#a6aeba}
-html:not([data-nen="sang"]) #app #tab-sim svg:not(#gu_rs *):not(#gu_svg *){background:#1b2129}
+html:not([data-nen="sang"]) #app #tab-sim svg:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){background:#1b2129}
 html:not([data-nen="sang"]) #app #tab-sim .warn{background:#372d01}
 html:not([data-nen="sang"]) #app #tab-sim .okbox{background:#0d3721}
 html:not([data-nen="sang"]) #app #tab-sim .stlist{border:1px solid #3e454f;background:#1b2129}
@@ -117,7 +117,7 @@ html:not([data-nen="sang"]) #app #tab-eng td{border-bottom:1px solid #303841}
 html:not([data-nen="sang"]) #app #tab-eng tr.best td{background:#0d3721}
 html:not([data-nen="sang"]) #app #tab-eng tr.now td{background:#262f37}
 html:not([data-nen="sang"]) #app #tab-eng .kpi div{border-left:3px solid var(--ink-nen)}
-html:not([data-nen="sang"]) #app #tab-eng svg:not(#gu_rs *):not(#gu_svg *){background:#181e26;border:1px solid #343c46}
+html:not([data-nen="sang"]) #app #tab-eng svg:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){background:#181e26;border:1px solid #343c46}
 html:not([data-nen="sang"]) #app #tab-eng .btn{border:1px solid #3e454f;background:#12181f;color:var(--ink-chu)}
 html:not([data-nen="sang"]) #app #tab-eng .btn.pri{background:var(--ink-nen);border-color:var(--ink-nen)}
 html:not([data-nen="sang"]) #app #tab-eng summary{color:var(--ink-chu)}
@@ -177,7 +177,7 @@ html:not([data-nen="sang"]) #app #tab-gau .btn.pri{background:var(--ink-nen);bor
 html:not([data-nen="sang"]) #app #tab-gau .warn{background:#372d01}
 html:not([data-nen="sang"]) #app #tab-gau .ok{background:#0d3721}
 html:not([data-nen="sang"]) #app #tab-gau .bad{background:#412526}
-html:not([data-nen="sang"]) #app #tab-gau svg:not(#gu_rs *):not(#gu_svg *){background:#181e26;border:1px solid #343c46}
+html:not([data-nen="sang"]) #app #tab-gau svg:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){background:#181e26;border:1px solid #343c46}
 html:not([data-nen="sang"]) #app #tab-gau .kpi div{border-left:3px solid var(--ink-nen)}
 html:not([data-nen="sang"]) #app #tab-gau .gu2 select,html:not([data-nen="sang"]) #app #tab-gau .gu2 input[type=number]{border:1px solid #3e454f;background:var(--field)}
 html:not([data-nen="sang"]) #app #tab-gau input.lk{background:var(--field)!important}
@@ -188,19 +188,17 @@ html:not([data-nen="sang"]) #app #tab-gau input.bad{background:#412526!important
 html:not([data-nen="sang"]) #app #gu_zwrap{border:1px solid #39414b;background:#1b2129}
 /* — từ css/07-thiet-ke-quay-dau.css — */
 html:not([data-nen="sang"]) #app #tab-tkqd .card{background:#1b2129}
-html:not([data-nen="sang"]) #app #tab-tkqd .qd2 input[type=number]:not(#gu_rs *):not(#gu_svg *),html:not([data-nen="sang"]) #app #tab-tkqd .qd2 input[type=text]:not(#gu_rs *):not(#gu_svg *),html:not([data-nen="sang"]) #app #tab-tkqd .qd2 select:not(#gu_rs *):not(#gu_svg *){border:1px solid #3e454f;background:var(--field)}
+html:not([data-nen="sang"]) #app #tab-tkqd .qd2 input[type=number]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app #tab-tkqd .qd2 input[type=text]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app #tab-tkqd .qd2 select:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){border:1px solid #3e454f;background:var(--field)}
 html:not([data-nen="sang"]) #app #tab-tkqd .qd2 input:disabled{background:var(--field);color:#9fcbfc}
 html:not([data-nen="sang"]) #app #tab-tkqd table.qd-ghi input[type=number]{border:1px solid #3e454f;background:var(--field)}
 html:not([data-nen="sang"]) #app #tab-tkqd .kpi div{border-left:3px solid var(--ink-nen)}
 html:not([data-nen="sang"]) #app #tab-tkqd .kpi div.hl{background:#141a22}
 html:not([data-nen="sang"]) #app #tab-tkqd table.qd-kq td.chon{background:#141a22}
-html:not([data-nen="sang"]) #app #tab-tkqd #qd_ve svg:not(#gu_rs *):not(#gu_svg *),html:not([data-nen="sang"]) #app #tab-tkqd #qd_bd svg:not(#gu_rs *):not(#gu_svg *),html:not([data-nen="sang"]) #app #tab-tkqd #qd_gantt svg:not(#gu_rs *):not(#gu_svg *){background:#1b2129}
 html:not([data-nen="sang"]) #app #tab-tkqd details summary{color:var(--ink-chu)}
 html:not([data-nen="sang"]) #app #tab-tkqd #qd_lythuyet .eq{background:#151b23;border-left:3px solid #3e454f}
 html:not([data-nen="sang"]) #app #tab-tkqd .qd-tb.ok{background:#0d3721}
 html:not([data-nen="sang"]) #app #tab-tkqd .qd-tb.canh{background:#372d01}
 html:not([data-nen="sang"]) #app #tab-tkqd table.qd-kq tr.chon td{background:#141a22}
-html:not([data-nen="sang"]) #app #tab-tkqd #qd_ghive svg:not(#gu_rs *):not(#gu_svg *){background:#1b2129}
 /* — từ css/08-phan-he-7-nhu-cau-van-tai.css — */
 html:not([data-nen="sang"]) #app #tab-ncvt .card{background:#1b2129}
 html:not([data-nen="sang"]) #app #tab-ncvt .nv-tabs button{border:1px solid #3e454f;background:#161c24;color:var(--ink-chu)}
@@ -265,59 +263,59 @@ html:not([data-nen="sang"]) #app #ld_host .ld-dat{background:#24312a}
 html:not([data-nen="sang"]) #app #ld_host .ld-khong{background:#392929}
 html:not([data-nen="sang"]) #app #ld_host .ld-de-xuat{background:#12181f}
 /* — màu viết thẳng trong mã js/*.js (thuộc tính SVG, style nội tuyến) — */
-html:not([data-nen="sang"]) #app svg [fill="#0b0b0b" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#e1e1e1}
-html:not([data-nen="sang"]) #app svg [fill="#0f172a" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#d3dae7}
-html:not([data-nen="sang"]) #app svg [fill="#0f3d6b" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#5c89bd}
-html:not([data-nen="sang"]) #app svg [fill="#111" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#dddddd}
-html:not([data-nen="sang"]) #app svg [fill="#1d5289" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#5489c5}
-html:not([data-nen="sang"]) #app svg [fill="#1e293b" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#c9d1de}
-html:not([data-nen="sang"]) #app svg [fill="#1e2b37" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#c6d2dd}
-html:not([data-nen="sang"]) #app svg [fill="#1f4e79" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#5b8ab9}
-html:not([data-nen="sang"]) #app svg [fill="#333" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#cbcbcb}
-html:not([data-nen="sang"]) #app svg [fill="#334155" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#bdc5d2}
-html:not([data-nen="sang"]) #app svg [fill="#444" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#c2c2c2}
-html:not([data-nen="sang"]) #app svg [fill="#475569" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#b3bcc8}
-html:not([data-nen="sang"]) #app svg [fill="#52514e" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#bdbcb9}
-html:not([data-nen="sang"]) #app svg [fill="#555" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#bababa}
-html:not([data-nen="sang"]) #app svg [fill="#e6e0ee" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#312a39}
-html:not([data-nen="sang"]) #app svg [fill="#e8eef5" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#0c1219}
-html:not([data-nen="sang"]) #app svg [fill="#e8f1fb" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#252f39}
-html:not([data-nen="sang"]) #app svg [fill="#fafbfc" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#171d25}
-html:not([data-nen="sang"]) #app svg [fill="#fcfcfb" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#181e26}
-html:not([data-nen="sang"]) #app svg [fill="#fff" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#1b2129}
-html:not([data-nen="sang"]) #app svg [fill="#ffffff" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){fill:#1b2129}
-html:not([data-nen="sang"]) #app svg [stroke="#0b0b0b" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#a3acb8}
-html:not([data-nen="sang"]) #app svg [stroke="#111" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#9fa8b4}
-html:not([data-nen="sang"]) #app svg [stroke="#1e293b" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#939ca7}
-html:not([data-nen="sang"]) #app svg [stroke="#333" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#8e97a2}
-html:not([data-nen="sang"]) #app svg [stroke="#5d4037" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#848d98}
-html:not([data-nen="sang"]) #app svg [stroke="#94a3b8" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#575f6a}
-html:not([data-nen="sang"]) #app svg [stroke="#cbd5e1" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#3e454f}
-html:not([data-nen="sang"]) #app svg [stroke="#e2e8f0" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#51565c}
-html:not([data-nen="sang"]) #app svg [stroke="#e6eaee" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#333b45}
-html:not([data-nen="sang"]) #app svg [stroke="#e7e7e3" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#353c46}
-html:not([data-nen="sang"]) #app svg [stroke="#eef1f4" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#0f141c}
-html:not([data-nen="sang"]) #app svg [stroke="#eef2f6" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#0f151d}
-html:not([data-nen="sang"]) #app svg [stroke="#eef2f7" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#0f151d}
-html:not([data-nen="sang"]) #app svg [stroke="#f3f5f7" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#121820}
-html:not([data-nen="sang"]) #app svg [stroke="#fcfcfb" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#181e26}
-html:not([data-nen="sang"]) #app svg [stroke="#fff" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){stroke:#1b2129}
-html:not([data-nen="sang"]) #app [style*="background:#e6f4f1" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){background:#22312e!important}
-html:not([data-nen="sang"]) #app [style*="background:#e8f6ec" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){background:#233228!important}
-html:not([data-nen="sang"]) #app [style*="background:#ecf7f1" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){background:#25312b!important}
-html:not([data-nen="sang"]) #app [style*="background:#fbfcfd" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){background:#181e26!important}
-html:not([data-nen="sang"]) #app [style*="background:#fdf4e3" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){background:#362c19!important}
-html:not([data-nen="sang"]) #app [style*="background:#fff" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){background:#1b2129!important}
-html:not([data-nen="sang"]) #app [style*=";color:#0f766e" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *),html:not([data-nen="sang"]) #app [style^="color:#0f766e" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){color:#6ec5bb!important}
-html:not([data-nen="sang"]) #app [style*=";color:#12365c" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *),html:not([data-nen="sang"]) #app [style^="color:#12365c" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){color:#a5cefd!important}
-html:not([data-nen="sang"]) #app [style*=";color:#16a34a" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *),html:not([data-nen="sang"]) #app [style^="color:#16a34a" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){color:#5dbc73!important}
-html:not([data-nen="sang"]) #app [style*=";color:#1f4e79" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *),html:not([data-nen="sang"]) #app [style^="color:#1f4e79" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){color:#93c4f6!important}
-html:not([data-nen="sang"]) #app [style*=";color:#444" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *),html:not([data-nen="sang"]) #app [style^="color:#444" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){color:#c2c2c2!important}
-html:not([data-nen="sang"]) #app [style*=";color:#475569" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *),html:not([data-nen="sang"]) #app [style^="color:#475569" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){color:#b3bcc8!important}
-html:not([data-nen="sang"]) #app [style*=";color:#555" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *),html:not([data-nen="sang"]) #app [style^="color:#555" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){color:#bababa!important}
-html:not([data-nen="sang"]) #app [style*=";color:#5b6678" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *),html:not([data-nen="sang"]) #app [style^="color:#5b6678" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){color:#acb4c0!important}
-html:not([data-nen="sang"]) #app [style*=";color:#5d6b78" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *),html:not([data-nen="sang"]) #app [style^="color:#5d6b78" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){color:#a8b3be!important}
-html:not([data-nen="sang"]) #app [style*=";color:#63748a" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *),html:not([data-nen="sang"]) #app [style^="color:#63748a" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){color:#a5aeba!important}
-html:not([data-nen="sang"]) #app [style*=";color:#64748b" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *),html:not([data-nen="sang"]) #app [style^="color:#64748b" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){color:#a6aeba!important}
-html:not([data-nen="sang"]) #app [style*=";color:#a81f1f" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *),html:not([data-nen="sang"]) #app [style^="color:#a81f1f" i]:not(#gu_rs *):not(#gu_svg):not(#gu_svg *){color:#fe968b!important}
+html:not([data-nen="sang"]) #app svg [fill="#0b0b0b" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#e1e1e1}
+html:not([data-nen="sang"]) #app svg [fill="#0f172a" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#d3dae7}
+html:not([data-nen="sang"]) #app svg [fill="#0f3d6b" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#5c89bd}
+html:not([data-nen="sang"]) #app svg [fill="#111" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#dddddd}
+html:not([data-nen="sang"]) #app svg [fill="#1d5289" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#5489c5}
+html:not([data-nen="sang"]) #app svg [fill="#1e293b" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#c9d1de}
+html:not([data-nen="sang"]) #app svg [fill="#1e2b37" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#c6d2dd}
+html:not([data-nen="sang"]) #app svg [fill="#1f4e79" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#5b8ab9}
+html:not([data-nen="sang"]) #app svg [fill="#333" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#cbcbcb}
+html:not([data-nen="sang"]) #app svg [fill="#334155" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#bdc5d2}
+html:not([data-nen="sang"]) #app svg [fill="#444" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#c2c2c2}
+html:not([data-nen="sang"]) #app svg [fill="#475569" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#b3bcc8}
+html:not([data-nen="sang"]) #app svg [fill="#52514e" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#bdbcb9}
+html:not([data-nen="sang"]) #app svg [fill="#555" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#bababa}
+html:not([data-nen="sang"]) #app svg [fill="#e6e0ee" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#312a39}
+html:not([data-nen="sang"]) #app svg [fill="#e8eef5" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#0c1219}
+html:not([data-nen="sang"]) #app svg [fill="#e8f1fb" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#252f39}
+html:not([data-nen="sang"]) #app svg [fill="#fafbfc" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#171d25}
+html:not([data-nen="sang"]) #app svg [fill="#fcfcfb" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#181e26}
+html:not([data-nen="sang"]) #app svg [fill="#fff" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#1b2129}
+html:not([data-nen="sang"]) #app svg [fill="#ffffff" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#1b2129}
+html:not([data-nen="sang"]) #app svg [stroke="#0b0b0b" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#a3acb8}
+html:not([data-nen="sang"]) #app svg [stroke="#111" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#9fa8b4}
+html:not([data-nen="sang"]) #app svg [stroke="#1e293b" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#939ca7}
+html:not([data-nen="sang"]) #app svg [stroke="#333" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#8e97a2}
+html:not([data-nen="sang"]) #app svg [stroke="#5d4037" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#848d98}
+html:not([data-nen="sang"]) #app svg [stroke="#94a3b8" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#575f6a}
+html:not([data-nen="sang"]) #app svg [stroke="#cbd5e1" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#3e454f}
+html:not([data-nen="sang"]) #app svg [stroke="#e2e8f0" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#51565c}
+html:not([data-nen="sang"]) #app svg [stroke="#e6eaee" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#333b45}
+html:not([data-nen="sang"]) #app svg [stroke="#e7e7e3" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#353c46}
+html:not([data-nen="sang"]) #app svg [stroke="#eef1f4" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#0f141c}
+html:not([data-nen="sang"]) #app svg [stroke="#eef2f6" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#0f151d}
+html:not([data-nen="sang"]) #app svg [stroke="#eef2f7" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#0f151d}
+html:not([data-nen="sang"]) #app svg [stroke="#f3f5f7" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#121820}
+html:not([data-nen="sang"]) #app svg [stroke="#fcfcfb" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#181e26}
+html:not([data-nen="sang"]) #app svg [stroke="#fff" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#1b2129}
+html:not([data-nen="sang"]) #app [style*="background:#e6f4f1" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){background:#22312e!important}
+html:not([data-nen="sang"]) #app [style*="background:#e8f6ec" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){background:#233228!important}
+html:not([data-nen="sang"]) #app [style*="background:#ecf7f1" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){background:#25312b!important}
+html:not([data-nen="sang"]) #app [style*="background:#fbfcfd" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){background:#181e26!important}
+html:not([data-nen="sang"]) #app [style*="background:#fdf4e3" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){background:#362c19!important}
+html:not([data-nen="sang"]) #app [style*="background:#fff" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){background:#1b2129!important}
+html:not([data-nen="sang"]) #app [style*=";color:#0f766e" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app [style^="color:#0f766e" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){color:#6ec5bb!important}
+html:not([data-nen="sang"]) #app [style*=";color:#12365c" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app [style^="color:#12365c" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){color:#a5cefd!important}
+html:not([data-nen="sang"]) #app [style*=";color:#16a34a" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app [style^="color:#16a34a" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){color:#5dbc73!important}
+html:not([data-nen="sang"]) #app [style*=";color:#1f4e79" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app [style^="color:#1f4e79" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){color:#93c4f6!important}
+html:not([data-nen="sang"]) #app [style*=";color:#444" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app [style^="color:#444" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){color:#c2c2c2!important}
+html:not([data-nen="sang"]) #app [style*=";color:#475569" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app [style^="color:#475569" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){color:#b3bcc8!important}
+html:not([data-nen="sang"]) #app [style*=";color:#555" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app [style^="color:#555" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){color:#bababa!important}
+html:not([data-nen="sang"]) #app [style*=";color:#5b6678" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app [style^="color:#5b6678" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){color:#acb4c0!important}
+html:not([data-nen="sang"]) #app [style*=";color:#5d6b78" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app [style^="color:#5d6b78" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){color:#a8b3be!important}
+html:not([data-nen="sang"]) #app [style*=";color:#63748a" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app [style^="color:#63748a" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){color:#a5aeba!important}
+html:not([data-nen="sang"]) #app [style*=";color:#64748b" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app [style^="color:#64748b" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){color:#a6aeba!important}
+html:not([data-nen="sang"]) #app [style*=";color:#a81f1f" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *),html:not([data-nen="sang"]) #app [style^="color:#a81f1f" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){color:#fe968b!important}
 }

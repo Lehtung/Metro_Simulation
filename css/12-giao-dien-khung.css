@@ -10,6 +10,9 @@ html[data-nhan="ho"]{--nhan:#f2a33a;--nhan-dam:#b86e0c}
 @media screen{
 /* ═════════════ NỀN TỐI — biến dùng chung (chỉ trong #app; báo cáo xem trước, thông báo nổi nằm ngoài #app giữ nền sáng) ═════════════ */
 html:not([data-nen="sang"]){color-scheme:dark}
+/* 5.3.2: phần ngoài #app (khung đăng nhập, hộp quản trị tài khoản của bản web, vùng báo cáo) vẫn giao diện sáng —
+   color-scheme:dark ở <html> làm chữ mặc định của ô nhập thành màu sáng, trùng nền trắng của các ô đó */
+html:not([data-nen="sang"]) body>:not(#app){color-scheme:light}
 html:not([data-nen="sang"]) body{background:#0b1220}
 html:not([data-nen="sang"]) #app{
   --text:#dde6f0;--muted:#97a8bc;--rule:#26364b;--bg:#0b1220;--card:#121c2b;--field:#16233a;--calc:#18263a;--key:#1b2c45;
@@ -37,8 +40,11 @@ html:not([data-nen="sang"]) #app .leaflet-tooltip-top:before{border-top-color:#1
 html:not([data-nen="sang"]) #app .leaflet-tooltip-bottom:before{border-bottom-color:#152034}
 html:not([data-nen="sang"]) #app .leaflet-tooltip-left:before{border-left-color:#152034}
 html:not([data-nen="sang"]) #app .leaflet-tooltip-right:before{border-right-color:#152034}
-/* bản vẽ kỹ thuật khổ A4 của phân hệ 5 giữ tờ giấy trắng (tao_chu_de_toi.py loại #gu_rs, #gu_svg khỏi luật đổi màu) */
+/* bản vẽ kỹ thuật khổ A4 của phân hệ 5 (và từ 5.3.1 bản vẽ, biểu đồ phân hệ 2) giữ tờ giấy trắng (tao_chu_de_toi.py loại #gu_rs, #gu_svg khỏi luật đổi màu) */
 html:not([data-nen="sang"]) #app #gu_rs,html:not([data-nen="sang"]) #app #gu_svg{color-scheme:light}
+/* 5.3.1: bản vẽ, biểu đồ phân hệ 2 cũng giữ tờ giấy trắng (tao_chu_de_toi.py va_2026_10bi loại #qd_ve, #qd_ghive, #qd_bd, #qd_gantt) */
+html:not([data-nen="sang"]) #app :is(#qd_ve,#qd_ghive,#qd_bd,#qd_gantt){color-scheme:light;color:#1e293b}
+html:not([data-nen="sang"]) #app :is(#qd_ve,#qd_ghive,#qd_bd,#qd_gantt) svg{background:#fff;border-radius:6px;box-shadow:0 0 0 1px #2a3b52}
 /* phân hệ 7: cột bản đồ không được đẩy cột bên phải ra ngoài khi vùng nội dung hẹp đi (thanh điều hướng dọc) */
 #tab-ncvt .nv-wrap{grid-template-columns:minmax(0,1fr) 440px}
 @media(max-width:1100px){#tab-ncvt .nv-wrap{grid-template-columns:minmax(0,1fr)}}
