@@ -1,0 +1,131 @@
+/* @file css/12-giao-dien-khung.css — khung giao diện 5.3.0: thanh điều hướng dọc theo 3 nhóm phân hệ, nền tối / sáng, màu nhấn, hộp Cài đặt (nút bánh răng) */
+/* Thuộc tính trên <html> do js/03-giao-dien.js đặt:  data-nen = toi | sang · data-bocuc = doc | ngang · data-nhan = lam | ngoc | ho.
+   MẶC ĐỊNH (chưa có thuộc tính) = nền tối + thanh dọc, nên mọi bộ chọn viết dạng :not([data-nen="sang"]) / :not([data-bocuc="ngang"])
+   để trang không nháy nền sáng trước khi mã chạy. Màu nền tối của từng phân hệ do css/13-chu-de-toi.css (tự sinh) đảm nhận;
+   tệp này nạp SAU tệp 13 để các chỉnh tay ở đây thắng. Mọi luật màu chỉ áp trên màn hình — bản in giữ nguyên. */
+:root{--nhan:#4cc2ff;--nhan-dam:#1d6fb8;--sb-w:244px;--ink-nen:var(--ink);--ink-chu:var(--ink)}
+html[data-nhan="ngoc"]{--nhan:#2ec4a6;--nhan-dam:#0f8a72}
+html[data-nhan="ho"]{--nhan:#f2a33a;--nhan-dam:#b86e0c}
+
+@media screen{
+/* ═════════════ NỀN TỐI — biến dùng chung (chỉ trong #app; báo cáo xem trước, thông báo nổi nằm ngoài #app giữ nền sáng) ═════════════ */
+html:not([data-nen="sang"]){color-scheme:dark}
+html:not([data-nen="sang"]) body{background:#0b1220}
+html:not([data-nen="sang"]) #app{
+  --text:#dde6f0;--muted:#97a8bc;--rule:#26364b;--bg:#0b1220;--card:#121c2b;--field:#16233a;--calc:#18263a;--key:#1b2c45;
+  --accent:#2ec4a6;--amber:#f0b45a;--red:#ff8a80;--sh:0 1px 2px rgba(0,0,0,.35),0 2px 10px rgba(0,0,0,.25);
+  --ink-nen:#24548a;--ink-chu:#8cc4f5;color:var(--text);background:var(--bg)}
+html:not([data-nen="sang"]) #app .tabpage{background:var(--bg);color:var(--text)}
+html:not([data-nen="sang"]) #app :where(input,select,textarea){background-color:var(--field);color:var(--text);border-color:#33465f}
+html:not([data-nen="sang"]) #app :where(input[readonly],input:disabled,select:disabled){background-color:var(--calc);color:#b9c6d6}
+html:not([data-nen="sang"]) #app a{color:#8cc4f5}
+html:not([data-nen="sang"]) #app *::-webkit-scrollbar-thumb{background:#33465f}
+html:not([data-nen="sang"]) #app *::-webkit-scrollbar-thumb:hover{background:#46607f}
+html:not([data-nen="sang"]) #app .modal{background:rgba(2,6,14,.62)}
+html:not([data-nen="sang"]) #app .mbox{background:var(--card);color:var(--text)}
+html:not([data-nen="sang"]) #app .mhdr{background:#0e1726;border-bottom:1px solid var(--rule)}
+html:not([data-nen="sang"]) #app .team-hero{background:linear-gradient(120deg,#0e1a2c,#14304f)}
+/* bản đồ Leaflet: dịu ảnh nền, điều khiển và chú giải nền tối */
+html:not([data-nen="sang"]) #app .leaflet-container{background:#1a2230}
+html:not([data-nen="sang"]) #app .leaflet-tile-pane{filter:brightness(.82) contrast(1.06) saturate(.9)}
+html:not([data-nen="sang"]) #app .leaflet-bar a,html:not([data-nen="sang"]) #app .leaflet-control-layers{background:#152034;color:#dde6f0;border-color:#2a3a50}
+html:not([data-nen="sang"]) #app .leaflet-bar a:hover{background:#1d2c45}
+html:not([data-nen="sang"]) #app .leaflet-control-attribution{background:rgba(11,18,32,.75);color:#97a8bc}
+html:not([data-nen="sang"]) #app .leaflet-control-attribution a{color:#8cc4f5}
+html:not([data-nen="sang"]) #app .leaflet-tooltip,html:not([data-nen="sang"]) #app .leaflet-popup-content-wrapper,html:not([data-nen="sang"]) #app .leaflet-popup-tip{background:#152034;color:#e6edf5;border-color:#2a3a50;box-shadow:0 2px 8px rgba(0,0,0,.45)}
+html:not([data-nen="sang"]) #app .leaflet-tooltip-top:before{border-top-color:#152034}
+html:not([data-nen="sang"]) #app .leaflet-tooltip-bottom:before{border-bottom-color:#152034}
+html:not([data-nen="sang"]) #app .leaflet-tooltip-left:before{border-left-color:#152034}
+html:not([data-nen="sang"]) #app .leaflet-tooltip-right:before{border-right-color:#152034}
+/* bản vẽ kỹ thuật khổ A4 của phân hệ 5 giữ tờ giấy trắng (tao_chu_de_toi.py loại #gu_rs, #gu_svg khỏi luật đổi màu) */
+html:not([data-nen="sang"]) #app #gu_rs,html:not([data-nen="sang"]) #app #gu_svg{color-scheme:light}
+/* phân hệ 7: cột bản đồ không được đẩy cột bên phải ra ngoài khi vùng nội dung hẹp đi (thanh điều hướng dọc) */
+#tab-ncvt .nv-wrap{grid-template-columns:minmax(0,1fr) 440px}
+@media(max-width:1100px){#tab-ncvt .nv-wrap{grid-template-columns:minmax(0,1fr)}}
+#tab-ncvt .nv-side{min-width:0}
+#tab-ncvt{padding:12px 16px 16px}
+/* bản xem trước báo cáo nằm ngoài #app: luôn là trang giấy trắng chữ đen */
+#mod-prev .mbody,#pv_b{color:#111}
+
+/* ═════════════ THANH ĐIỀU HƯỚNG DỌC (mặc định) ═════════════ */
+html:not([data-bocuc="ngang"]){--hdr-h:0px}
+html:not([data-bocuc="ngang"]) #app{display:grid;grid-template-columns:var(--sb-w) minmax(0,1fr);grid-template-rows:minmax(0,1fr);height:100%}
+html:not([data-bocuc="ngang"]) #app>.tabpage{grid-column:2;grid-row:1;height:100%!important;min-width:0;min-height:0}
+html:not([data-bocuc="ngang"]) #hdr{grid-column:1;grid-row:1;height:100%!important;flex-direction:column;align-items:stretch;flex-wrap:nowrap;
+  gap:4px;padding:16px 12px 12px;background:#0f2742;border-bottom:0;border-right:1px solid #1c3554;box-shadow:none;overflow-y:auto;overflow-x:hidden;z-index:600}
+html:not([data-bocuc="ngang"]):not([data-nen="sang"]) #hdr{background:#0a1322;border-right-color:#1b2a3f}
+html:not([data-bocuc="ngang"]) #hdr .brand{margin:0 4px 10px;padding:0 0 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+html:not([data-bocuc="ngang"]) #hdr .brand-tx,html:not([data-bocuc="ngang"]) #hdr .brand-tx span{display:flex!important}
+html:not([data-bocuc="ngang"]) #hdr .brand-tx span{color:#8fb3d6}
+html:not([data-bocuc="ngang"]) .tabbar{flex-direction:column;align-self:stretch;flex:1 1 auto;gap:2px;overflow:visible;min-height:0}
+html:not([data-bocuc="ngang"]) .tabbar button{text-align:left;white-space:normal;line-height:1.3;border-radius:8px!important;padding:9px 12px 9px 14px!important;
+  font-size:13px!important;letter-spacing:0!important;font-weight:500;color:#b9c7d8;background:transparent}
+html:not([data-bocuc="ngang"]) .tabbar button:hover{background:rgba(255,255,255,.06);color:#fff}
+html:not([data-bocuc="ngang"]) .tabbar button.on{background:rgba(76,194,255,.14);background:color-mix(in srgb,var(--nhan) 16%,transparent);color:#fff;font-weight:600}
+html:not([data-bocuc="ngang"]) .tabbar button.on::before{left:0;right:auto;top:8px;bottom:8px;height:auto;width:3px;border-radius:0 3px 3px 0;background:var(--nhan)}
+html:not([data-bocuc="ngang"]) .tb-nhom{display:block;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:#7f97b2;padding:12px 12px 5px}
+html:not([data-bocuc="ngang"]) .tb-nhom:first-child{padding-top:2px}
+html:not([data-bocuc="ngang"]) .tb-ngan{display:block;height:1px;background:rgba(255,255,255,.08);margin:auto 4px 6px;padding-top:0;flex:0 0 1px}
+html:not([data-bocuc="ngang"]) #hdr .sp{display:none}
+html:not([data-bocuc="ngang"]) .hdr-cuoi{display:flex;align-items:center;gap:8px;padding:10px 4px 0;border-top:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
+html:not([data-bocuc="ngang"]) .hdr-pb{display:inline;margin-left:auto;font-size:11.5px;color:#7f97b2}
+/* bản web: menu tài khoản (khung-menu.html) nằm ở chân thanh dọc, cạnh nút bánh răng — thanh dọc cắt phần tràn ngang
+   nên menu bám theo cả chân thanh (.hdr-cuoi), rộng đúng bề rộng thanh, mở lên trên */
+html:not([data-bocuc="ngang"]) .hdr-cuoi{position:relative}
+html:not([data-bocuc="ngang"]) #hdr .kd-nd{position:static;flex:1 1 0;min-width:0}
+html:not([data-bocuc="ngang"]) #hdr #kd_nd_nut{width:100%;height:36px;overflow:hidden;text-overflow:ellipsis;text-align:left;background:rgba(255,255,255,.07);color:#dbe6f2;border:1px solid rgba(255,255,255,.14)}
+html:not([data-bocuc="ngang"]) #hdr #kd_nd_nut:hover{background:rgba(255,255,255,.14)}
+html:not([data-bocuc="ngang"]) #hdr .kd-menu{top:auto;bottom:calc(100% + 6px);left:0;right:0;min-width:0}
+html:not([data-bocuc="ngang"]) #hdr .kd-menu button{white-space:normal}
+html:not([data-bocuc="ngang"]) #hdr .kd-nd:not([hidden])~.hdr-pb{display:none}
+html:not([data-nen="sang"]) #hdr .kd-menu{background:#121c2b;border:1px solid #26364b;color:#dde6f0}
+html:not([data-nen="sang"]) #hdr .kd-menu button{color:#dde6f0}
+html:not([data-nen="sang"]) #hdr .kd-menu button:hover,html:not([data-nen="sang"]) #hdr .kd-menu button:focus-visible{background:#1b2a40}
+html:not([data-nen="sang"]) #hdr .kd-menu-dau{color:#e6edf5;border-bottom-color:#26364b}
+html:not([data-nen="sang"]) #hdr .kd-menu-dau span{color:#97a8bc}
+html:not([data-nen="sang"]) #hdr .kd-menu hr{border-top-color:#26364b}
+@media(max-width:1300px){html:not([data-bocuc="ngang"]){--sb-w:212px}}
+@media(max-width:900px){html:not([data-bocuc="ngang"]){--sb-w:180px}html:not([data-bocuc="ngang"]) #hdr .brand-tx span{display:none!important}}
+
+/* ═════════════ THANH THẺ NGANG (kiểu cổ điển) ═════════════ */
+html[data-bocuc="ngang"] .tb-nhom,html[data-bocuc="ngang"] .tb-ngan,html[data-bocuc="ngang"] .hdr-pb{display:none}
+html[data-bocuc="ngang"] .hdr-cuoi{display:flex;align-items:center;gap:8px;flex:0 0 auto}
+html[data-bocuc="ngang"] .tabbar button.on::before{background:var(--nhan)}
+html[data-bocuc="ngang"]:not([data-nen="sang"]) #hdr{background:linear-gradient(90deg,#08111f 0%,#0c1a2e 50%,#10243d 100%);border-bottom-color:var(--nhan)}
+html[data-bocuc="ngang"]:not([data-nen="sang"]) .tabbar button.on{color:#e6edf5}
+html[data-bocuc="ngang"] #hdr{border-bottom-color:var(--nhan)}
+html[data-bocuc="ngang"] .tabbar button{padding:11px 8px 12px!important;font-size:12px!important;letter-spacing:0!important}
+@media(max-width:1700px){html[data-bocuc="ngang"] .tabbar button{padding:11px 5px 12px!important;font-size:11.2px!important}html[data-bocuc="ngang"] #hdr{gap:6px;padding:0 8px}html[data-bocuc="ngang"] .brand{margin-right:0}}
+}
+
+/* ═════════════ NÚT BÁNH RĂNG VÀ HỘP CÀI ĐẶT ═════════════ */
+.h-ic{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0!important;flex:0 0 36px}
+.h-ic svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s}
+.h-ic:hover svg{transform:rotate(40deg)}
+.h-ic:focus-visible,.cd-chon button:focus-visible{outline:2px solid var(--nhan);outline-offset:2px}
+#mod-caidat .cd-hop{width:min(600px,94vw)}
+.cd-than{padding:6px 22px 20px!important;background:var(--card,#fff);color:var(--text)}
+.cd-muc{padding:14px 0 4px;border-bottom:1px solid var(--rule)}
+.cd-muc:last-of-type{border-bottom:0}
+.cd-muc h3{margin:0 0 10px;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.cd-chon{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:10px}
+.cd-chon button{font:inherit;font-size:13px;text-align:left;display:flex;flex-direction:column;gap:6px;padding:10px 12px;border-radius:10px;cursor:pointer;
+  border:1.5px solid var(--rule);background:transparent;color:var(--text);min-height:44px}
+.cd-chon button:hover{border-color:var(--muted)}
+.cd-chon button.on{border-color:var(--nhan);box-shadow:0 0 0 3px rgba(76,194,255,.18);box-shadow:0 0 0 3px color-mix(in srgb,var(--nhan) 22%,transparent)}
+.cd-chon button b{font-weight:600}
+.cd-chon button small{font-size:11.5px;color:var(--muted);line-height:1.35}
+.cd-mau{display:block;height:46px;border-radius:7px;border:1px solid rgba(127,140,160,.35);overflow:hidden;position:relative}
+.cd-mau.toi{background:linear-gradient(90deg,#0a1322 0 28%,#121c2b 28%)}
+.cd-mau.sang{background:linear-gradient(90deg,#0f2742 0 28%,#eef1f5 28%)}
+.cd-mau.he{background:linear-gradient(135deg,#121c2b 0 50%,#eef1f5 50%)}
+.cd-mau.doc{background:linear-gradient(90deg,#33465f 0 26%,transparent 26%),repeating-linear-gradient(180deg,transparent 0 9px,rgba(127,140,160,.25) 9px 11px)}
+.cd-mau.ngang{background:linear-gradient(180deg,#33465f 0 26%,transparent 26%),repeating-linear-gradient(90deg,transparent 0 14px,rgba(127,140,160,.25) 14px 16px)}
+.cd-nhan{display:flex;gap:10px;margin-bottom:10px}
+.cd-nhan button{width:44px;height:44px;min-height:44px;border-radius:50%;padding:0;align-items:center;justify-content:center;border-width:2px}
+.cd-nhan button span{width:24px;height:24px;border-radius:50%;display:block}
+.cd-nhan .u-nhan-lam{background:#4cc2ff}.cd-nhan .u-nhan-ngoc{background:#2ec4a6}.cd-nhan .u-nhan-ho{background:#f2a33a}
+.cd-chan{display:flex;align-items:center;gap:12px;padding-top:14px;flex-wrap:wrap}
+.cd-chan button{font:inherit;font-size:13px;padding:8px 14px;border-radius:8px;border:1px solid var(--rule);background:transparent;color:var(--text);cursor:pointer;min-height:40px}
+.cd-chan span{font-size:12px;color:var(--muted)}
+@media print{#mod-caidat,.hdr-cuoi{display:none!important}}
