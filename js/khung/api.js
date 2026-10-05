@@ -38,6 +38,11 @@ async function goiMot(hd,duLieu){
   try{ j=await r.json(); }
   catch(e){ throw new LoiApi('MANG','Máy chủ không trả JSON (phản hồi có thể bị cắt giữa chừng).'); }
   if(!j||!j.ok){ if(j&&j.ma==='PHIEN') datToken(''); throw new LoiApi(j&&j.ma||'MAY_CHU',j&&j.loi||'Lỗi không xác định.'); }
+  /* 5.3.2 (sửa 1): yêu cầu POST bị chuyển thành GET trên đường đi (mất thân yêu cầu) thì máy chủ chạy doGet và trả
+     trang kiểm tra {ok, ung_dung, ban, …} — trông như «thành công» nhưng không phải kết quả của hành động. Coi là lỗi
+     đường truyền: hành động chỉ đọc (kể cả đăng nhập) được tự thử lại. */
+  if(j.ung_dung&&j.ban&&!j.token&&!j.goi)
+    throw new LoiApi('MANG','Máy chủ trả trang kiểm tra (doGet, bản '+j.ban+') thay vì kết quả của «'+hd+'» — yêu cầu POST bị chuyển hướng thành GET.');
   return j;
 }
 

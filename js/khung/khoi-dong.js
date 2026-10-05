@@ -114,8 +114,18 @@ async function taiTatCaPhanMa(tong){
 
 /* ---- nạp gói ứng dụng ---- */
 async function napGoi(j){
-  ND=j.nguoi_dung; capNhatMenu();
   hien('kd_dang_tai'); loi('');
+  /* 5.3.2 (sửa 1): phản hồi đăng nhập / đổi mật khẩu thiếu gói dữ liệu (đã gặp thật: «Cannot read properties of undefined
+     (reading 'du_lieu')») — có phiên rồi thì lấy gói bằng hành động khoi_dong thay vì dừng; vẫn thiếu thì báo rõ đã nhận gì. */
+  if(!j||!j.goi||!j.goi.du_lieu){
+    const nhan=j?Object.keys(j).join(', '):'(rỗng)';
+    if(!API.token()) throw new Error('Máy chủ trả lời nhưng không có mã phiên và gói dữ liệu (nhận: '+nhan+'). Kiểm tra js/khung/cau-hinh.js trỏ đúng địa chỉ Web App và máy chủ đúng bản '+((window.APP_VERSION||{}).so||'')+'.');
+    chu('Đang tải gói dữ liệu từ máy chủ…');
+    const k=await API.goi('khoi_dong',null,{bao:(a,n)=>chu('Đường truyền tới Google trục trặc, đang thử lại lần '+a+'/'+n+'…')});
+    if(!k.goi||!k.goi.du_lieu) throw new Error('Máy chủ không gửi gói dữ liệu (đăng nhập nhận: '+nhan+'; khởi động nhận: '+Object.keys(k).join(', ')+'). Mở thẳng địa chỉ …/exec để xem máy chủ đang chạy bản nào.');
+    j=Object.assign({},j,{goi:k.goi,nguoi_dung:k.nguoi_dung||(j&&j.nguoi_dung)});
+  }
+  ND=j.nguoi_dung||ND; capNhatMenu();
   chu('Đang dựng dữ liệu 5 tuyến từ Google Sheet…');
   window.CORE=BANG_DU_LIEU.raCore(j.goi.du_lieu);
   /* Mã tính toán tải theo từng phần: một phản hồi Apps Script không chở nổi cả gói (bị cắt giữa chừng). */
@@ -184,6 +194,7 @@ el('kd_f_dn').addEventListener('submit',async ev=>{
   try{
     const j=await API.goi('dang_nhap',{ten:el('kd_ten').value.trim(),mat_khau:el('kd_mk').value},
       {bao:(k,n)=>{ hien('kd_dang_tai'); chu('Đường truyền tới Google trục trặc, đang thử lại lần '+k+'/'+n+'…'); }});
+    if(!j.token) throw new Error('Máy chủ trả lời đăng nhập nhưng thiếu mã phiên (nhận: '+Object.keys(j).join(', ')+'). Thử lại; nếu vẫn lỗi, mở thẳng địa chỉ …/exec để xem máy chủ đang chạy bản nào.');
     API.datToken(j.token); ND=j.nguoi_dung;
     if(j.phai_doi_mk){ el('kd_mk_cu').value=el('kd_mk').value; el('kd_mk').value=''; moDoiMatKhau(true); return; }
     el('kd_mk').value=''; await napGoi(j);
