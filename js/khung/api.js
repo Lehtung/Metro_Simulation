@@ -23,14 +23,19 @@ const nghi=ms=>new Promise(r=>setTimeout(r,ms));
 const CHI_DOC={dang_nhap:1,khoi_dong:1,tai_ma:1,tai_thong_so:1,ds_nguoi_dung:1,nhat_ky:1,dang_xuat:1};
 const CHO=[600,1500,3000,6000];
 
-async function goiMot(hd,duLieu){
+async function goiMot(hd,duLieu,quaGet){
   const C=window.CAU_HINH_WEB||{}, url=String(C.API_URL||'');
   if(!/^https:\/\/script\.google\.com\/macros\/s\/[\w-]+\/exec$/.test(url)&&!C.CHO_PHEP_URL_KHAC)
     throw new LoiApi('CAU_HINH','Chưa cấu hình địa chỉ máy chủ. Mở tệp js/khung/cau-hinh.js và dán địa chỉ Web App của Google Apps Script vào API_URL.');
   const than=Object.assign({hd,token:token(),_n:Math.random().toString(36).slice(2)+Date.now().toString(36)},duLieu||{});
   const ctl=new AbortController(), hen=setTimeout(()=>ctl.abort(),C.THOI_GIAN_CHO_MS||90000);
   let r;
-  try{ r=await fetch(url,{method:'POST',body:JSON.stringify(than),redirect:'follow',signal:ctl.signal,cache:'no-store'}); }
+  try{
+    if(quaGet){  /* 5.3.3: chỉ cho tai_ma — tham số trên địa chỉ là khoá tải mã, KHÔNG có mã phiên */
+      const q=new URLSearchParams(Object.assign({hd,_n:than._n},duLieu||{}));
+      r=await fetch(url+'?'+q.toString(),{method:'GET',redirect:'follow',signal:ctl.signal,cache:'no-store'});
+    }else r=await fetch(url,{method:'POST',body:JSON.stringify(than),redirect:'follow',signal:ctl.signal,cache:'no-store'});
+  }
   catch(e){ throw new LoiApi('MANG',e&&e.name==='AbortError'?'Máy chủ phản hồi quá lâu.':'Không kết nối được máy chủ Google Apps Script.'); }
   finally{ clearTimeout(hen); }
   if(!r.ok) throw new LoiApi('MANG','Máy chủ trả lỗi HTTP '+r.status+'.');
@@ -41,22 +46,27 @@ async function goiMot(hd,duLieu){
   /* 5.3.2 (sửa 1): yêu cầu POST bị chuyển thành GET trên đường đi (mất thân yêu cầu) thì máy chủ chạy doGet và trả
      trang kiểm tra {ok, ung_dung, ban, …} — trông như «thành công» nhưng không phải kết quả của hành động. Coi là lỗi
      đường truyền: hành động chỉ đọc (kể cả đăng nhập) được tự thử lại. */
-  if(j.ung_dung&&j.ban&&!j.token&&!j.goi)
-    throw new LoiApi('MANG','Máy chủ trả trang kiểm tra (doGet, bản '+j.ban+') thay vì kết quả của «'+hd+'» — yêu cầu POST bị chuyển hướng thành GET.');
+  if(j.ung_dung&&j.ban&&!j.token&&!j.goi){
+    /* qua GET mà vẫn nhận trang kiểm tra: máy chủ chưa phải 5.3.3 (doGet chưa biết tai_ma) — không thử lại, để nơi gọi chuyển sang POST */
+    if(quaGet) throw new LoiApi('KHONG_HO_TRO','Máy chủ bản '+j.ban+' chưa hỗ trợ tải mã qua GET.');
+    let den='';try{const d=new URL(r.url);den=d.host+d.pathname;}catch(e){}
+    throw new LoiApi('DOGET','Máy chủ trả trang kiểm tra (doGet, bản '+j.ban+') thay vì kết quả của «'+hd+'» — yêu cầu POST bị chuyển thành GET trên đường đi'+(den?' (địa chỉ cuối: '+den+')':'')+'.');
+  }
   return j;
 }
 
 /* tuyChon.bao(lanThu, tongLan, thongBaoLanTruoc) — để màn hình chờ hiện "đang thử lại".
    tuyChon.thuLai — ép số lần thử lại, dùng khi nơi gọi muốn tự lo việc thử lại. */
 async function goi(hd,duLieu,tuyChon){
-  const t=tuyChon||{};
+  const t=tuyChon||{}, quaGet=!!t.quaGet;
   const soLan=t.thuLai!=null?t.thuLai:(CHI_DOC[hd]?CHO.length:0);
   let cuoi=null;
   for(let i=0;i<=soLan;i++){
     if(i){ if(t.bao) try{t.bao(i,soLan,cuoi&&cuoi.message);}catch(e){} await nghi(CHO[Math.min(i-1,CHO.length-1)]); }
-    try{ return await goiMot(hd,duLieu); }
-    catch(e){ if(!e||e.ma!=='MANG') throw e; cuoi=e; }
+    try{ return await goiMot(hd,duLieu,quaGet); }
+    catch(e){ if(!e||(e.ma!=='MANG'&&e.ma!=='DOGET')) throw e; cuoi=e; }
   }
+  if(cuoi.ma==='DOGET'){ cuoi.message+=' Đã thử lại '+soLan+' lần.'; throw cuoi; }
   cuoi.message=cuoi.message+' Đã thử lại '+soLan+' lần. '
     +'Lỗi 404 ở đây phát sinh tại bước chuyển hướng của Apps Script sang script.googleusercontent.com, không phải do địa chỉ sai. '
     +'Cách xử lý: trong Chrome mở Cài đặt → Quyền riêng tư và bảo mật → Cookie của bên thứ ba → thêm '

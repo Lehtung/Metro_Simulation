@@ -1,4 +1,4 @@
-/* @file css/13-chu-de-toi.css — nền tối: TỰ SINH bởi 03_MA_NGUON_MODULE/va_2026_10bi/tao_chu_de_toi.py từ màu của css/01–11 và js/*.js; KHÔNG sửa tay — sửa màu gốc rồi chạy lại công cụ */
+/* @file css/13-chu-de-toi.css — nền tối: TỰ SINH bởi 03_MA_NGUON_MODULE/va_2026_10bm/tao_chu_de_toi.py từ màu của css/01–11 và js/*.js; KHÔNG sửa tay — sửa màu gốc rồi chạy lại công cụ */
 @media screen{
 /* — từ css/01-giao-dien-chung.css — */
 html:not([data-nen="sang"]) #app #ux_bar{background:#1b2129;border:1px solid #4f565e}
@@ -129,6 +129,7 @@ html:not([data-nen="sang"]) #app #tab-gis .gxd h4{color:#fa9387}
 html:not([data-nen="sang"]) #app #tab-gis #g_map{background:#070d14}
 html:not([data-nen="sang"]) #app #tab-gis #g_mapwrap:fullscreen{background:#1b2129}
 html:not([data-nen="sang"]) #app #tab-gis #g_mapwrap:-webkit-full-screen{background:#1b2129}
+html:not([data-nen="sang"]) #app #tab-gis .sim button.g-ic[aria-pressed="false"]{background:#1b2129;color:#afd0f5}
 html:not([data-nen="sang"]) #app #tab-gis .sim #g_full{border:1px solid #404852;background:#1b2129;color:#afd0f5}
 html:not([data-nen="sang"]) #app #tab-gis .sim #g_full:hover{background:#10161e}
 html:not([data-nen="sang"]) #app #tab-gis .sim #g_spd{border:1px solid #404852}
@@ -262,6 +263,12 @@ html:not([data-nen="sang"]) #app #ld_host .ld-tag{background:#392929;color:#fe96
 html:not([data-nen="sang"]) #app #ld_host .ld-dat{background:#24312a}
 html:not([data-nen="sang"]) #app #ld_host .ld-khong{background:#392929}
 html:not([data-nen="sang"]) #app #ld_host .ld-de-xuat{background:#12181f}
+/* — từ css/14-so-sanh-gia-toc.css — */
+html:not([data-nen="sang"]) #app #gt_host svg.gt-bd:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){background:#1b2129}
+html:not([data-nen="sang"]) #app #gt_host .gt-bang tr.gt-moc td{background:#121820;color:#b3bcc8}
+html:not([data-nen="sang"]) #app #gt_host .gt-bang td.gt-duong{color:#6dca8e}
+html:not([data-nen="sang"]) #app #gt_host .gt-bang td.gt-am{color:#fe968b}
+html:not([data-nen="sang"]) #app #gt_host .gt-bang tr.gt-tong td{border-top:2px solid #575f6a;background:#121820}
 /* — màu viết thẳng trong mã js/*.js (thuộc tính SVG, style nội tuyến) — */
 html:not([data-nen="sang"]) #app svg [fill="#0b0b0b" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#e1e1e1}
 html:not([data-nen="sang"]) #app svg [fill="#0f172a" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#d3dae7}
@@ -277,6 +284,7 @@ html:not([data-nen="sang"]) #app svg [fill="#444" i]:not(#gu_rs):not(#gu_rs *):n
 html:not([data-nen="sang"]) #app svg [fill="#475569" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#b3bcc8}
 html:not([data-nen="sang"]) #app svg [fill="#52514e" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#bdbcb9}
 html:not([data-nen="sang"]) #app svg [fill="#555" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#bababa}
+html:not([data-nen="sang"]) #app svg [fill="#5b6470" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#acb5c1}
 html:not([data-nen="sang"]) #app svg [fill="#e6e0ee" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#312a39}
 html:not([data-nen="sang"]) #app svg [fill="#e8eef5" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#0c1219}
 html:not([data-nen="sang"]) #app svg [fill="#e8f1fb" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){fill:#252f39}
@@ -292,6 +300,7 @@ html:not([data-nen="sang"]) #app svg [stroke="#5d4037" i]:not(#gu_rs):not(#gu_rs
 html:not([data-nen="sang"]) #app svg [stroke="#94a3b8" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#575f6a}
 html:not([data-nen="sang"]) #app svg [stroke="#cbd5e1" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#3e454f}
 html:not([data-nen="sang"]) #app svg [stroke="#e2e8f0" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#51565c}
+html:not([data-nen="sang"]) #app svg [stroke="#e3e6ea" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#353d47}
 html:not([data-nen="sang"]) #app svg [stroke="#e6eaee" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#333b45}
 html:not([data-nen="sang"]) #app svg [stroke="#e7e7e3" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#353c46}
 html:not([data-nen="sang"]) #app svg [stroke="#eef1f4" i]:not(#gu_rs):not(#gu_rs *):not(#gu_svg):not(#gu_svg *):not(#qd_ve):not(#qd_ve *):not(#qd_ghive):not(#qd_ghive *):not(#qd_bd):not(#qd_bd *):not(#qd_gantt):not(#qd_gantt *){stroke:#0f141c}

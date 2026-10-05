@@ -30,13 +30,27 @@ const nghi=ms=>new Promise(r=>setTimeout(r,ms));
    Việc thử lại khi đường truyền trục trặc do lớp API lo (xem api.js). Ở đây chỉ lo phần nội dung:
    độ dài và mã kiểm tra phải trùng số máy chủ báo; sai thì tải lại phần đó một lần nữa.
    Máy chủ trước 3.24.5 không gửi 'dai'/'ks' — khi đó bỏ qua bước kiểm nội dung. */
+/* 5.3.3: tải qua GET bằng khoá tải (KHOA_TAI, máy chủ cấp kèm gói) — ở một số máy POST tai_ma bị chuyển thành GET và
+   nhận trang kiểm tra (lỗi thật 05/10/2026). Máy chủ cũ chưa hỗ trợ (KHONG_HO_TRO) hoặc GET hỏng hẳn thì quay về POST. */
+let KHOA_TAI='', DUNG_GET=true;
+async function layPhanMa(i,bao){
+  if(KHOA_TAI&&DUNG_GET){
+    try{ return await API.goi('tai_ma',{k:KHOA_TAI,phan:i},{quaGet:true,bao}); }
+    catch(e){
+      if(e&&e.ma==='KHONG_HO_TRO'){ DUNG_GET=false; console.warn('[tai_ma] '+e.message+' Dùng POST.'); }
+      else if(!e||(e.ma!=='MANG'&&e.ma!=='DOGET')) throw e;
+      else console.warn('[tai_ma] GET thất bại ('+e.message+'), thử POST.');
+    }
+  }
+  return API.goi('tai_ma',{phan:i},{bao});
+}
 async function taiPhanMa(i,baoSuCo){
   let cuoi='';
   for(let lan=0;lan<2;lan++){
-    const p=await API.goi('tai_ma',{phan:i},{bao:(k,n,tb)=>{
+    const p=await layPhanMa(i,(k,n,tb)=>{
       if(baoSuCo) baoSuCo();
       chu('Đang nạp mã tính toán… phần '+(i+1)+'/'+SO_PHAN+', thử lại lần '+k+'/'+n+'…');
-    }});
+    });
     const ma=String(p.ma==null?'':p.ma);
     if(p.dai!=null&&ma.length!==p.dai){cuoi='nhận '+ma.length+'/'+p.dai+' ký tự';if(baoSuCo)baoSuCo();continue;}
     if(p.ks&&bam32(ma)!==p.ks){cuoi='mã kiểm tra '+bam32(ma)+' ≠ '+p.ks;if(baoSuCo)baoSuCo();continue;}
@@ -131,7 +145,7 @@ async function napGoi(j){
   /* Mã tính toán tải theo từng phần: một phản hồi Apps Script không chở nổi cả gói (bị cắt giữa chừng). */
   const tong=+j.goi.so_phan_ma||0;
   if(!tong) throw new Error('Máy chủ không có mã tính toán (so_phan_ma = 0) — kiểm tra các tệp logic_*.html trên Apps Script.');
-  SO_PHAN=tong;
+  SO_PHAN=tong; KHOA_TAI=String(j.goi.khoa_tai||''); DUNG_GET=true;
   const pbMa=j.goi.phien_ban_logic||'';
   let tep=docDem(pbMa);
   if(tep){

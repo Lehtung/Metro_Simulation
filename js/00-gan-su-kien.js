@@ -50,6 +50,7 @@
  /* — Phân hệ 3 – báo cáo — */
  gan('eng_nut_pdf','click',function(event){App.report('eng',true);});
  gan('eng_nut_xem','click',function(event){App.report('eng',false);});
+ gan('gt_chay','click',function(event){SSGT.chay();});
  /* — Phân hệ 5 – báo cáo — */
  gan('gau_nut_pdf','click',function(event){App.report('gau',true);});
  gan('gau_nut_xem','click',function(event){App.report('gau',false);});
