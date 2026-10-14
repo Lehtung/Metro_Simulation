@@ -1,4 +1,4 @@
-/* @file css/13-chu-de-toi.css — nền tối: TỰ SINH bởi 03_MA_NGUON_MODULE/va_2026_10bm/tao_chu_de_toi.py từ màu của css/01–11 và js/*.js; KHÔNG sửa tay — sửa màu gốc rồi chạy lại công cụ */
+/* @file css/13-chu-de-toi.css — nền tối: TỰ SINH bởi 03_MA_NGUON_MODULE/va_2026_10bn/tao_chu_de_toi.py từ màu của css/01–11 và js/*.js; KHÔNG sửa tay — sửa màu gốc rồi chạy lại công cụ */
 @media screen{
 /* — từ css/01-giao-dien-chung.css — */
 html:not([data-nen="sang"]) #app #ux_bar{background:#1b2129;border:1px solid #4f565e}
@@ -108,6 +108,12 @@ html:not([data-nen="sang"]) #app #tab-sim .zinfo{color:#b3bcc8}
 html:not([data-nen="sang"]) #app #tab-sim .grp{border:1px solid #51565c;background:#1b2129}
 html:not([data-nen="sang"]) #app #tab-sim .grph{color:#93c4f6;border-bottom:1px solid #303741}
 html:not([data-nen="sang"]) #app #tbs tr.sw-ht td{background:#1c313d}
+html:not([data-nen="sang"]) #app #d_sc_card .sc-loi{color:#fe968b}
+html:not([data-nen="sang"]) #app #d_sc_card .sc-luu_y{color:#e39b54}
+html:not([data-nen="sang"]) #app #d_sc_card .sc-thieu{color:#acb4c0}
+html:not([data-nen="sang"]) #app #d_sc_card .sc-dat{color:#6dca8e}
+html:not([data-nen="sang"]) #app #d_sc_card td.sc-giam{color:#fe968b}
+html:not([data-nen="sang"]) #app #d_sc_card .sc-th{color:#bdc5d2}
 /* — từ css/03-phan-he-3-hieu-suat.css — */
 html:not([data-nen="sang"]) #app #tab-eng .card{background:#1b2129}
 html:not([data-nen="sang"]) #app #tab-eng h2{color:var(--ink-chu);border-bottom:2px solid #51565c}

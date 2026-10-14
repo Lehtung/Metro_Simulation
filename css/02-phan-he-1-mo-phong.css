@@ -55,3 +55,11 @@
 
 #tab-sim .wrap{align-items:stretch}#tab-sim #side{max-height:none;height:calc(100vh - 78px)}#tab-sim #main{height:calc(100vh - 78px);overflow:auto}
 #tbs tr.sw-ht td{background:#e0f2fe;font-weight:600}   /* 5.2.2: dòng Vtk đang dùng trong «So sánh nhiều vận tốc» */
+/* 5.5.0: bảng siêu cao các đường cong (thẻ Dữ liệu chung) */
+#d_sc_card .sc-loi{color:#a81f1f;font-weight:600}
+#d_sc_card .sc-luu_y{color:#a4610a}
+#d_sc_card .sc-thieu{color:#5b6678;font-style:italic}
+#d_sc_card .sc-dat{color:#0f7b45}
+#d_sc_card td.sc-giam{color:#a81f1f;font-weight:600}
+#d_sc_card .sc-th{color:#334155}
+#d_sc_card td.l{white-space:normal;min-width:220px}

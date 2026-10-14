@@ -24,7 +24,9 @@ const LUOC_DO={
   ['X','so','Toạ độ X VN-2000 (m)',1],['Y','so','Toạ độ Y VN-2000 (m)',1]]},
  DL_DUONG_CONG:{mo_ta:'Đường cong nằm',cot:[
   ['ma_tuyen','chu','Mã tuyến'],['stt','so','Số thứ tự'],
-  ['s0','so','Lý trình đầu (m)'],['s1','so','Lý trình cuối (m)'],['R','so','Bán kính (m)']]},
+  ['s0','so','Lý trình đầu (m)'],['s1','so','Lý trình cuối (m)'],['R','so','Bán kính (m)'],
+  /* 5.5.0: siêu cao thiết kế — cột TUỲ CHỌN (phần tử thứ 5 = 1): bảng cũ thiếu cột vẫn đọc được; ô trống = chưa có số liệu */
+  ['h','so','Siêu cao thiết kế h_a (mm) — để trống nếu chưa có',0,1]]},
  DL_TRAC_DOC:{mo_ta:'Trắc dọc (điểm đổi dốc)',cot:[
   ['ma_tuyen','chu','Mã tuyến'],['stt','so','Số thứ tự'],
   ['ly_trinh','so','Lý trình (m)'],['cao_do','so','Cao độ đỉnh ray (m)']]},
@@ -124,7 +126,7 @@ function raCore(bang){
     const L=LUOC_DO[ten], rows=bang[ten];
     if(!rows||rows.length<2){loi.push('Thiếu bảng '+ten);return [];}
     const dau=rows[0].map(x=>String(x).trim()), idx=L.cot.map(c=>dau.indexOf(c[0]));
-    L.cot.forEach((c,i)=>{if(idx[i]<0&&!(c[0]==='ten'&&ten==='DL_GA')) loi.push(ten+': thiếu cột '+c[0]);});
+    L.cot.forEach((c,i)=>{if(idx[i]<0&&!(c[0]==='ten'&&ten==='DL_GA')&&!c[4]) loi.push(ten+': thiếu cột '+c[0]);});
     const out=[];
     for(let r=2;r<rows.length;r++){
       const row=rows[r]; if(!row||row.every(x=>x===''||x===null||x===undefined)) continue;
